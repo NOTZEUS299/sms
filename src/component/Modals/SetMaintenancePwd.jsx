@@ -50,7 +50,7 @@ const SetMaintenancePwd = ({ setShowMaintenance,Fdata }) => {
             placeholder="****"
             onChange={handlePasswordChange}
             className={`w-full border rounded-md p-2 pr-10 text-gray-700 focus:outline-none ${
-              isIncorrect ? 'border-red-500' : 'focus:border-orange-500'
+              isIncorrect ? 'border-red-500' : 'focus:border-blue-500'
             }`}
             required
           />

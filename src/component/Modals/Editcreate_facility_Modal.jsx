@@ -58,7 +58,7 @@ const EditcreateFacilityModal = ({ seteditcreate_facility, _id, lodData }) => {
                             name="Facility_Name"
                             value={data.Facility_Name || ''} 
                             onChange={chang}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
                     <div className="mb-4">
@@ -67,7 +67,7 @@ const EditcreateFacilityModal = ({ seteditcreate_facility, _id, lodData }) => {
                             name="Description"
                             value={data.Description || ''} 
                             onChange={chang}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
                     <div className="mb-4">
@@ -77,7 +77,7 @@ const EditcreateFacilityModal = ({ seteditcreate_facility, _id, lodData }) => {
                             name="Schedule_Service_Date"
                             value={data.Schedule_Service_Date || ''} 
                             onChange={chang}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
                     <div className="mb-4">
@@ -86,7 +86,7 @@ const EditcreateFacilityModal = ({ seteditcreate_facility, _id, lodData }) => {
                             name="Remind_Before"
                             value={data.Remind_Before || ''} 
                             onChange={chang}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             <option value="">Select Day</option>
                             <option value={1}>1 Day Before</option>

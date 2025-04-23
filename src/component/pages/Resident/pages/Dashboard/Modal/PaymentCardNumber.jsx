@@ -33,7 +33,7 @@ const PaymentCardNumber = ({ close1, close2, close3 }) => {
               {...register("cardName", {
                 required: "Card name is required",
               })}
-              className={`w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 ${errors.cardName ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-orange-500"
+              className={`w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 ${errors.cardName ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
                 }`}
             />
             {errors.cardName && (
@@ -57,7 +57,7 @@ const PaymentCardNumber = ({ close1, close2, close3 }) => {
                 },
               })}
               placeholder="1234 5678 8745 5212"
-              className={`w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 ${errors.cardNumber ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-orange-500"
+              className={`w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 ${errors.cardNumber ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
                 }`}
             />
             {errors.cardNumber && (
@@ -83,7 +83,7 @@ const PaymentCardNumber = ({ close1, close2, close3 }) => {
                   },
                 })}
                 placeholder="MM/YY"
-                className={`w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 ${errors.expiryDate ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-orange-500"
+                className={`w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 ${errors.expiryDate ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
                   }`}
               />
               {errors.expiryDate && (
@@ -107,7 +107,7 @@ const PaymentCardNumber = ({ close1, close2, close3 }) => {
                   },
                 })}
                 placeholder="123"
-                className={`w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 ${errors.cvv ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-orange-500"
+                className={`w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 ${errors.cvv ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
                   }`}
               />
               {errors.cvv && (

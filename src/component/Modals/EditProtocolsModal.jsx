@@ -59,7 +59,7 @@ const EditProtocolsModal = ({ _id, CloseEditProtocols }) => {
                             type="text"
                             placeholder="Enter Title"
                             {...register('Title', { required: 'Title is required', minLength: { message: 'Title is required' } })}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {errors.Title && <p className="text-red-500 text-sm">{errors.Title.message}</p>}
                     </div>
@@ -70,7 +70,7 @@ const EditProtocolsModal = ({ _id, CloseEditProtocols }) => {
                         <textarea
                             placeholder="Enter Description"
                             {...register('Description', { required: 'Description is required', minLength: { message: 'Description is required' } })}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {errors.Description && <p className="text-red-500 text-sm">{errors.Description.message}</p>}
                     </div>
@@ -81,7 +81,7 @@ const EditProtocolsModal = ({ _id, CloseEditProtocols }) => {
                         <input
                             type="date"
                             {...register('Date', { required: 'Date is required' })}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {errors.Date && <p className="text-red-500 text-sm">{errors.Date.message}</p>}
                     </div>
@@ -92,7 +92,7 @@ const EditProtocolsModal = ({ _id, CloseEditProtocols }) => {
                         <input
                             type="time"
                             {...register('Time', { required: 'Time is required' })}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {errors.Time && <p className="text-red-500 text-sm">{errors.Time.message}</p>}
                     </div>

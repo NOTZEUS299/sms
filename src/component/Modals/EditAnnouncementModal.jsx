@@ -51,7 +51,7 @@ const EditAnnouncementModal = ({ ClaseEditAnnouncement, _id, LodaData }) => {
             <input
               type="text"
               placeholder="Enter Name"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               {...register('title', { required: "Title is required" })}
               onChange={handleChange} 
             />
@@ -64,7 +64,7 @@ const EditAnnouncementModal = ({ ClaseEditAnnouncement, _id, LodaData }) => {
             </label>
             <textarea
               placeholder="Enter Description"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               {...register('description', { required: "Description is required" })}
               onChange={handleChange} // Handle change event
             />
@@ -78,7 +78,7 @@ const EditAnnouncementModal = ({ ClaseEditAnnouncement, _id, LodaData }) => {
               </label>
               <input
                 type="date"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 {...register('date', { required: "Date is required" })}
                 onChange={handleChange} // Handle change event
               />

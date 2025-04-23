@@ -70,7 +70,7 @@ const CloseResidenceVacate = () => {
 
                 {/* Radio Buttons for Occupied/Vacate */}
                 <div className="flex gap-4 mb-4">
-                    <label className={`flex items-center px-4 py-2 rounded-lg cursor-pointer ${editComplaint.Status === "Occupied" ? 'border-2 border-orange-500' : 'border border-gray-300'}`}>
+                    <label className={`flex items-center px-4 py-2 rounded-lg cursor-pointer ${editComplaint.Status === "Occupied" ? 'border-2 border-blue-500' : 'border border-gray-300'}`}>
                         <input
                             type="radio"
                             name="Status"
@@ -81,7 +81,7 @@ const CloseResidenceVacate = () => {
                         />
                         <span className="text-lg font-medium">Occupied</span>
                     </label>
-                    <label className={`flex items-center px-4 py-2 rounded-lg cursor-pointer ${editComplaint.Status === "Vacate" ? 'border-2 border-orange-500' : 'border border-gray-300'}`}>
+                    <label className={`flex items-center px-4 py-2 rounded-lg cursor-pointer ${editComplaint.Status === "Vacate" ? 'border-2 border-blue-500' : 'border border-gray-300'}`}>
                         <input
                             type="radio"
                             name="Status"
@@ -106,7 +106,7 @@ const CloseResidenceVacate = () => {
                     <input
                         type="checkbox"
                         id="agree"
-                        className="mr-2 w-5 h-5 text-orange-500 focus:ring-orange-500 border-gray-300 rounded"
+                        className="mr-2 w-5 h-5 text-orange-500 focus:ring-blue-500 border-gray-300 rounded"
                     />
                     <label htmlFor="agree" className="text-sm text-gray-600">By submitting, you agree to select Occupied</label>
                 </div>
@@ -122,7 +122,7 @@ const CloseResidenceVacate = () => {
                     </button>
                     <button
                         type="button"
-                        className="py-2 w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow-lg hover:from-orange-600 hover:to-yellow-600 transition duration-200"
+                        className="py-2 w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow-lg hover:from-blue-800 hover:to-blue-700 transition duration-200"
                         onClick={handleSave}
                     >
                         Save

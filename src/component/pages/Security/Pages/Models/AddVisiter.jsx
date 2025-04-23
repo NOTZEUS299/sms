@@ -51,7 +51,7 @@ const AddVisiter = ({ close, Fdata }) => {
               type="text"
               {...register("Visitor_Name", { required: "Visitor Name is required" })}
               placeholder="Evelyn Harper"
-              className={`mt-2 w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 ${errors.name ? "border-red-500" : "border-gray-300"
+              className={`mt-2 w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${errors.name ? "border-red-500" : "border-gray-300"
                 }`}
             />
             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
@@ -65,7 +65,7 @@ const AddVisiter = ({ close, Fdata }) => {
               type="text"
               {...register("Phone", { required: " Phone  Number is required" })}
               placeholder="9821541540"
-              className={`mt-2 w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 ${errors.phone ? "border-red-500" : "border-gray-300"
+              className={`mt-2 w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${errors.phone ? "border-red-500" : "border-gray-300"
                 }`}
             />
             {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
@@ -79,7 +79,7 @@ const AddVisiter = ({ close, Fdata }) => {
                 type="text"
                 {...register("Wing", { required: "Wing is required" })}
                 placeholder="A"
-                className={`mt-2 w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 ${errors.wing ? "border-red-500" : "border-gray-300"
+                className={`mt-2 w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${errors.wing ? "border-red-500" : "border-gray-300"
                   }`}
               />
               {errors.wing && <p className="text-red-500 text-sm mt-1">{errors.wing.message}</p>}
@@ -92,7 +92,7 @@ const AddVisiter = ({ close, Fdata }) => {
                 type="text"
                 {...register("Unit", { required: "Unit is required" })}
                 placeholder="1001"
-                className={`mt-2 w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 ${errors.unit ? "border-red-500" : "border-gray-300"
+                className={`mt-2 w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${errors.unit ? "border-red-500" : "border-gray-300"
                   }`}
               />
               {errors.unit && <p className="text-red-500 text-sm mt-1">{errors.unit.message}</p>}
@@ -108,7 +108,7 @@ const AddVisiter = ({ close, Fdata }) => {
                 <input
                   type="date"
                   {...register("Date", { required: "Date is required" })}
-                  className={`w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 ${errors.date ? "border-red-500" : "border-gray-300"
+                  className={`w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${errors.date ? "border-red-500" : "border-gray-300"
                     }`}
                 />
                 <FaCalendarAlt className="absolute top-3 right-4 text-gray-400 pointer-events-none" />
@@ -123,7 +123,7 @@ const AddVisiter = ({ close, Fdata }) => {
                 <input
                   type="time"
                   {...register("Time", { required: "Time is required" })}
-                  className={`w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 ${errors.time ? "border-red-500" : "border-gray-300"
+                  className={`w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${errors.time ? "border-red-500" : "border-gray-300"
                     }`}
                 />
                 <FaClock className="absolute top-3 right-4 text-gray-400 pointer-events-none" />

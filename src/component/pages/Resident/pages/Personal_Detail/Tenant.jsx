@@ -276,9 +276,9 @@ const Tenant = () => {
                   <span>₹ {typeof value === "number" ? value.toFixed(2) : value}</span>
                 </div>
               ))}
-              <button className="mt-4 w-full bg-gradient-to-r from-orange-500 to-yellow-400 text-white py-2 rounded-lg shadow">
-                Pay Now
-              </button>
+              <button className="mt-4 w-full bg-gradient-to-r from-blue-900 to-blue-600 text-white py-2 rounded-lg shadow hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-blue-300 transition-all duration-200">
+  Pay Now
+</button>
             </div>
           </div>
         ))}

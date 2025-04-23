@@ -30,7 +30,7 @@ const Create_facility_model = ({ setClosecreate_facility, Fdata }) => {
                             type="text"
                             placeholder="Enter Name"
                             {...register('facilityname', { required: 'Facility name is required' })}
-                            className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 ${
+                            className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                                 errors.facilityname ? 'border-red-500' : ''
                             }`}
                         />
@@ -44,7 +44,7 @@ const Create_facility_model = ({ setClosecreate_facility, Fdata }) => {
                         <textarea
                             placeholder="Enter Description"
                             {...register('description', { required: 'Description is required' })}
-                            className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 ${
+                            className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                                 errors.description ? 'border-red-500' : ''
                             }`}
                         />
@@ -56,7 +56,7 @@ const Create_facility_model = ({ setClosecreate_facility, Fdata }) => {
                         <input
                             type="date"
                             {...register('scheduleservicedate')}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -64,7 +64,7 @@ const Create_facility_model = ({ setClosecreate_facility, Fdata }) => {
                         <label className="block text-gray-700 text-sm font-medium mb-2">Remind Before</label>
                         <select
                             {...register('remindbefore')}
-                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             <option value="">Select Day</option>
                             <option value={1}>1 Day Before</option>

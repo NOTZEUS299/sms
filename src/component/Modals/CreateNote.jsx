@@ -28,7 +28,7 @@ const CreateNote = ({ Fdata, setcreate }) => {
               Title<span className="text-red-500">*</span>
             </label>
             <input type="text" placeholder="Enter Title" {...register('title', { required: 'Title is required.' })}
-              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${errors.title ? 'border-red-500 focus:ring-red-500' : 'focus:ring-orange-500'
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${errors.title ? 'border-red-500 focus:ring-red-500' : 'focus:ring-blue-500'
                 }`} />
             {errors.title && (
               <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
@@ -43,7 +43,7 @@ const CreateNote = ({ Fdata, setcreate }) => {
             <textarea
               placeholder="Enter Description"
               {...register('description', { required: 'Description is required.' })}
-              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${errors.description ? 'border-red-500 focus:ring-red-500' : 'focus:ring-orange-500'
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${errors.description ? 'border-red-500 focus:ring-red-500' : 'focus:ring-blue-500'
                 }`}
             />
             {errors.description && (
@@ -63,7 +63,7 @@ const CreateNote = ({ Fdata, setcreate }) => {
                 validate: (value) =>
                   new Date(value) >= new Date() || 'Date cannot be in the past.',
               })}
-              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${errors.date ? 'border-red-500 focus:ring-red-500' : 'focus:ring-orange-500'
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${errors.date ? 'border-red-500 focus:ring-red-500' : 'focus:ring-blue-500'
                 }`}
             />
             {errors.date && (

@@ -19,7 +19,7 @@ const OpneResidence_Vacate = ({ setShowResidence_Vacate,setShowResidenceStatusOn
                     <select
                         value={wing}
                         onChange={(e) => setWing(e.target.value)}
-                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">Select Wing</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
@@ -33,7 +33,7 @@ const OpneResidence_Vacate = ({ setShowResidence_Vacate,setShowResidenceStatusOn
                     <select
                         value={unit}
                         onChange={(e) => setUnit(e.target.value)}
-                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">Select Unit</option>
                         <option value="1001">1001</option>
                         <option value="1002">1002</option>
@@ -50,8 +50,9 @@ const OpneResidence_Vacate = ({ setShowResidence_Vacate,setShowResidenceStatusOn
                     </button>
                     <button
                         type="button"
-                        className="py-2 w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow-lg hover:from-orange-600 hover:to-yellow-600 transition duration-200"
-                        onClick={handleSave}>
+                        className="py-2 w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow-lg hover:from-blue-800 hover:to-blue-700 transition duration-200"
+                        onClick={handleSave}
+                    >
                         Create
                     </button>
                 </div>
