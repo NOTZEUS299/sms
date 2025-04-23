@@ -111,7 +111,7 @@ const CreateSociety = ({ CloseCreatenewSociety,LodData }) => {
                         </button>
                         <button
                             type="button"
-                            className="bg-gray-100 w-1/2 hover:bg-gradient-to-r hover:from-orange-600 hover:to-yellow-500 hover:text-white text-black font-semibold py-1 rounded text-sm"
+                            className="bg-gray-100 w-1/2 hover:bg-gradient-to-r hover:from-blue-700 hover:to-blue-500 hover:text-white text-black font-semibold py-1 rounded text-sm"
                             onClick={handleAddSociety}
                         >
                             Add Society

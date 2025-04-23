@@ -43,7 +43,7 @@ const Events_Participation = () => {
         <div className="p-6 bg-gray-100">
           <div className="flex flex-wrap">
             <button
-              className={`py-2 px-8 max-[426px]:px-4 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${activeTab === "Events" ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white"
+              className={`py-2 px-8 max-[426px]:px-4 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${activeTab === "Events" ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white"
                   : "bg-white text-gray-700"
                 }`}
               onClick={() => setActiveTab("Events")}
@@ -52,7 +52,7 @@ const Events_Participation = () => {
             </button>
             <button
               className={`py-2 px-8 max-[426px]:px-4 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${activeTab === "Activity"
-                ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white"
+                ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white"
                 : "bg-white text-gray-700"
                 }`}
               onClick={() => setActiveTab("Activity")}

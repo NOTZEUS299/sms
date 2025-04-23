@@ -25,7 +25,7 @@ const AddAnnouncementModal = ({ ClaseAddAnnouncement, Fdata }) => {
         <div className='fixed inset-0 bg-black bg-opacity-30 flex justify-center items-center z-50'>
             <div className="bg-white rounded-lg shadow-lg w-11/12 lg:w-1/4 md:w-1/2 overflow-auto max-h-svh">
                 <div className="flex justify-between items-center p-4 border-b">
-                    <h1 className="text-lg font-semibold">Create New Society</h1>
+                    <h1 className="text-lg font-semibold">Create New Announcement</h1>
                     <button type="button" className="text-gray-600 hover:text-gray-800 text-2xl" onClick={ClaseAddAnnouncement}>
                         &times;
                     </button>

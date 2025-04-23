@@ -29,7 +29,7 @@ const Resident_Owner_Form = () => {
             <div className="flex">
               <button
                 className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${activeTab === "Owner"
-                  ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white"
+                  ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white"
                   : "bg-white text-gray-700"
                   }`}
                 onClick={() => setActiveTab("Owner")}
@@ -38,7 +38,7 @@ const Resident_Owner_Form = () => {
               </button>
               <button
                 className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${activeTab === "Tenant"
-                  ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white"
+                  ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white"
                   : "bg-white text-gray-700"
                   }`}
                 onClick={() => setActiveTab("Tenant")}

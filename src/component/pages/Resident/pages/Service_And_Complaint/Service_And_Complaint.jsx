@@ -28,7 +28,7 @@ const Service_And_Complaint = () => {
                 <div className="flex p-5 pb-0">
                     <button
                         className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${activeTab === "Complaint_Submission"
-                            ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white"
+                            ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white"
                             : "bg-white text-gray-700"
                             }`}
                         onClick={() => setActiveTab("Complaint_Submission")}
@@ -37,7 +37,7 @@ const Service_And_Complaint = () => {
                     </button>
                     <button
                         className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${activeTab === "Request_Submission"
-                            ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white"
+                            ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white"
                             : "bg-white text-gray-700"
                             }`}
                         onClick={() => setActiveTab("Request_Submission")}

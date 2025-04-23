@@ -215,7 +215,7 @@ const Home = () => {
                     <h2 className="text-lg font-semibold text-gray-800">Important Numbers</h2>
                     <button
                       onClick={openModal}
-                      className="flex items-center bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600"
+                      className="flex items-center bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
                     >
                       <FaPlus className="mr-2" />
                       Add

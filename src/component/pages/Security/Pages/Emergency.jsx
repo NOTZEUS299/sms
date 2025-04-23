@@ -97,7 +97,7 @@ const Emergency = ({ Fdata }) => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-slate-200 text-black py-3 px-6 rounded-lg font-medium hover:bg-gradient-to-r from-orange-600 to-yellow-500 hover:text-white flex items-center justify-center space-x-2"
+                className="w-full bg-slate-200 text-black py-3 px-6 rounded-lg font-medium hover:bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:text-white flex items-center justify-center space-x-2"
               >
                 <IoSend className="w-5 h-5" />
                 <span>Send</span>

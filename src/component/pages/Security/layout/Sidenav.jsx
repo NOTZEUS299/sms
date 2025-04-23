@@ -29,7 +29,7 @@ export default function Sidenav({ toggleNav, data }) {
             onClick={toggleDropdown}
             aria-current={pathname.startsWith("/security") ? "page" : undefined}
             className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg transition-colors duration-300 flex items-center bg-gradient-to-r  text-white from-orange-600 to-yellow-500   ${pathname.startsWith("/security")
-              ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold"
+              ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white font-semibold"
               : "hover:bg-gray-100 text-black"
               }`}
           >
@@ -72,7 +72,7 @@ export default function Sidenav({ toggleNav, data }) {
         <div className="border-t">
           <Link to="/"
             className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg block transition-colors duration-300 flex text-black text-red-600 items-center ${pathname === "/"
-              ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold"
+              ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white font-semibold"
               : "hover:bg-gray-100"
               }`}
           >
