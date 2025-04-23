@@ -104,7 +104,7 @@ const Expense = () => {
             <div className="flex justify-between items-center mb-4 md:mb-6 p-4">
               <h1 className="text-xl lg:text-2xl font-semibold">Add Expenses Details</h1>
               <button
-                className="bg-orange-500 text-white px-2 md:px-4 py-1 md:py-2 rounded-lg hover:bg-orange-600 text-md md:text-base flex items-center"
+                className="bg-blue-500 text-white px-2 md:px-4 py-1 md:py-2 rounded-lg hover:bg-orange-600 text-md md:text-base flex items-center"
                 onClick={Open}
               >
                 <FaSquarePlus className="mr-2 text-sm" /> Add

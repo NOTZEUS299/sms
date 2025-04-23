@@ -106,7 +106,7 @@ const CloseResidenceVacate = () => {
                     <input
                         type="checkbox"
                         id="agree"
-                        className="mr-2 w-5 h-5 text-orange-500 focus:ring-blue-500 border-gray-300 rounded"
+                        className="mr-2 w-5 h-5 text-blue-500 focus:ring-blue-500 border-gray-300 rounded"
                     />
                     <label htmlFor="agree" className="text-sm text-gray-600">By submitting, you agree to select Occupied</label>
                 </div>

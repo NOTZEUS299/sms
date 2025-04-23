@@ -106,7 +106,7 @@ const Polls = () => {
               <button
                 key={type}
                 onClick={() => setPollType(type)}
-                className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${
+                className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-blue-500 ${
                   pollType === type
                     ? 'bg-orange-600 text-white'
                     : 'bg-white text-gray-700'
@@ -121,7 +121,7 @@ const Polls = () => {
               <h2 className="text-xl font-bold text-gray-800">Polls</h2>
               <button
                 onClick={openCreatePoll}
-                className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg"
+                className="bg-blue-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg"
               >
                 Create Poll
               </button>

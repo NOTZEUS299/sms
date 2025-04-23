@@ -138,7 +138,7 @@ const CreatePoll = ({ closeCreatePoll, Fdata }) => {
           </button>
           <button
             type="submit"
-            className="px-14 py-2 text-black bg-gray-100 rounded-md font-semibold hover:bg-gradient-to-r from-red-500 to-orange-500 hover:text-white"
+            className="px-14 py-2 text-black bg-gray-100 rounded-md font-semibold hover:bg-gradient-to-r from-red-500 to-blue-500 hover:text-white"
           >
             Create
           </button>

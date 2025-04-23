@@ -309,7 +309,7 @@ const Resident_Tenant = () => {
 
             <div className="mt-4 flex justify-end">
                 <Link to={"/manager/resident_management"} className="px-4 py-2 rounded-lg border-2 bg-white mr-3">Cancel</Link>
-                <button onClick={handleSubmit} className="px-4 py-2 bg-orange-500 text-white rounded-lg">Create</button>
+                <button onClick={handleSubmit} className="px-4 py-2 bg-blue-500 text-white rounded-lg">Create</button>
             </div>
         </div>
     )

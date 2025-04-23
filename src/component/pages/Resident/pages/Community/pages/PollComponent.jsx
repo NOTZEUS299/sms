@@ -42,7 +42,7 @@ const PollComponent = ({ polls }) => {
               </div>
               <hr className="mt-4" />
               <h3 className="mt-4 text-lg font-semibold text-gray-800">{poll.title}</h3>
-              <div className="mt-2 text-sm text-orange-500 font-medium flex items-center">
+              <div className="mt-2 text-sm text-blue-500 font-medium flex items-center">
                 <BiRadioCircle className="mr-2" />
                 <span>Select one or more</span>
               </div>

@@ -88,7 +88,7 @@ const Personal_Detail = () => {
           {/* Tabs Section */}
           <div className="flex flex-wrap ">
             <button
-              className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${activeTab === "Owner"
+              className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-blue-500 ${activeTab === "Owner"
                 ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white"
                 : "bg-white text-gray-700"
                 }`}
@@ -97,7 +97,7 @@ const Personal_Detail = () => {
               Owner
             </button>
             <button
-              className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-orange-500 ${activeTab === "Tenant"
+              className={`py-2 px-8 font-semibold text-center rounded-t-lg border-b-2 border-b-blue-500 ${activeTab === "Tenant"
                 ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white"
                 : "bg-white text-gray-700"
                 }`}

@@ -18,7 +18,7 @@ export default function Sidenav({ toggleNav, data }) {
       <div className="flex flex-col justify-between h-screen">
         <div>
           <div className="flex justify-center my-4">
-            <h1 className="text-4xl font-bold text-orange-600 mt-3 max-[425px]:mt-10 mb-5">Dash<span className="text-black">Stack</span></h1>
+          <h1 className="text-4xl font-bold text-blue-600 mt-3 max-[425px]:mt-10 mb-5">Civic<span className="text-black">Nest</span></h1>
           </div>
 
           <button onClick={toggleNav} className="absolute text-black top-0 right-6 text-3xl hidden max-[425px]:flex">
