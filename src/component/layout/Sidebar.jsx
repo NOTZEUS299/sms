@@ -46,8 +46,8 @@ export default function Sidenav({ toggleNav, data }) {
     >
       <div className="flex flex-col justify-between h-screen">
         <div>
-          <div className="flex justify-center my-4">
-            <h1 className="text-4xl font-bold text-orange-600 mt-3 max-[425px]:mt-10 mb-5">Dash<span className="text-black">Stack</span></h1>
+        <div className="flex justify-center my-4">
+            <h1 className="text-4xl font-bold text-blue-600 mt-3 max-[425px]:mt-10 mb-5">Civic<span className="text-black">Nest</span></h1>
           </div>
 
           <button onClick={toggleNav} className="absolute text-black top-0 right-6 text-3xl hidden max-[426px]:flex">
@@ -56,44 +56,44 @@ export default function Sidenav({ toggleNav, data }) {
 
           <Link
             to="/manager/home"
-            className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg transition-colors duration-300 flex text-black items-center ${pathname.startsWith("/manager/home") ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold" : "hover:bg-gray-100"
+            className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg transition-colors duration-300 flex text-black items-center ${pathname.startsWith("/manager/home") ? "bg-gradient-to-r from-blue-600 to-blue-900 text-white font-semibold" : "hover:bg-gray-100"
               }`}
           >
-            {pathname === "/manager/home" && (
+            {/* {pathname === "/manager/home" && (
               <div className="absolute -left-4 top-0 bottom-0 w-2 bg-orange-600 rounded-r-lg"></div>
-            )}
+            )} */}
             <MdDashboard className="inline mr-2" />
-            Dashboard
+            Overview
           </Link>
 
           <Link
             to="/manager/resident_management"
             className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg block transition-colors duration-300 text-black flex items-center ${pathname.startsWith("/manager/resident_management")
-              ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold"
+              ? "bg-gradient-to-r from-blue-600 to-blue-900 text-white font-semibold"
               : "hover:bg-gray-200"
               }`}
           >
-            {pathname.startsWith("/manager/resident_management") && (
+            {/* {pathname.startsWith("/manager/resident_management") && (
               <div className="absolute -left-4 top-0 bottom-0 w-2 bg-orange-600 rounded-r-lg"></div>
-            )}
+            )} */}
             <BsFillRecordBtnFill className="inline mr-2" />
-            Resident Management
+            Member Directory
           </Link>
 
           <Link
             onClick={toggleDropdown}
             aria-current={pathname.startsWith("/manager/financial_management") ? "page" : undefined}
             className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg transition-colors duration-300 flex items-center ${pathname.startsWith("/manager/financial_management")
-              ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold"
+              ? "bg-gradient-to-r from-blue-600 to-blue-900 text-white font-semibold"
               : "hover:bg-gray-100 text-black"
               }`}
           >
             {/* Active Indicator */}
-            {pathname.startsWith("/manager/financial_management") && (
+            {/* {pathname.startsWith("/manager/financial_management") && (
               <div className="absolute -left-4 top-0 bottom-0 w-2 bg-orange-600 rounded-r-lg"></div>
-            )}
+            )} */}
             <RiMoneyDollarBoxFill className="inline mr-2" />
-            Financial Management
+            Billing & Payments
           </Link>
 
           {/* Dropdown Menu */}
@@ -133,29 +133,29 @@ export default function Sidenav({ toggleNav, data }) {
 
           <Link
             to="/manager/facility_management"
-            className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg block transition-colors duration-300 flex text-black items-center ${pathname === "/manager/facility_management" ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold" : "hover:bg-gray-100"
+            className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg block transition-colors duration-300 flex text-black items-center ${pathname === "/manager/facility_management" ? "bg-gradient-to-r from-blue-600 to-blue-900 text-white font-semibold" : "hover:bg-gray-100"
               }`}
           >
-            {pathname.startsWith("/manager/facility_management") && (
+            {/* {pathname.startsWith("/manager/facility_management") && (
               <div className="absolute -left-4 top-0 bottom-0 w-2 bg-orange-600 rounded-r-lg"></div>
-            )}
+            )} */}
             <FaCity className="inline mr-2" />
-            Facility Management
+            Amenities & Resources
           </Link>
 
           <Link
             onClick={toggleComplaintTrackingDropdown}
             aria-current={pathname.startsWith("/manager/complaint_tracking") ? "page" : undefined}
             className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg block transition-colors duration-300 flex text-black items-center ${pathname.startsWith("/manager/complaint_tracking")
-              ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold"
+              ? "bg-gradient-to-r from-blue-600 to-blue-900 text-white font-semibold"
               : "hover:bg-gray-100"
               }`}
           >
-            {pathname.startsWith("/manager/complaint_tracking") && (
+            {/* {pathname.startsWith("/manager/complaint_tracking") && (
               <div className="absolute -left-4 top-0 bottom-0 w-2 bg-orange-600 rounded-r-lg"></div>
-            )}
+            )} */}
             <MdAttachEmail className="inline mr-2" />
-            Complaint Tracking
+            Issue Resolution
           </Link>
 
           {/* Dropdown Menu */}
@@ -189,15 +189,15 @@ export default function Sidenav({ toggleNav, data }) {
             onClick={toggleSecurity_managementDropdown}
             aria-current={pathname.startsWith("/manager/security_management") ? "page" : undefined}
             className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg block transition-colors duration-300 flex text-black items-center ${pathname.startsWith("/manager/security_management")
-              ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold"
+              ? "bg-gradient-to-r from-blue-600 to-blue-900 text-white font-semibold"
               : "hover:bg-gray-100"
               }`}
           >
-            {pathname.startsWith("/manager/security_management") && (
+            {/* {pathname.startsWith("/manager/security_management") && (
               <div className="absolute -left-4 top-0 bottom-0 w-2 bg-orange-600 rounded-r-lg"></div>
-            )}
+            )} */}
             <MdSecurity className="inline mr-2" />
-            Security Management
+            Safety & Security
           </Link>
 
           {isSecurity_managementDropdown && (
@@ -229,29 +229,29 @@ export default function Sidenav({ toggleNav, data }) {
           <Link
             to="/manager/security_guard"
             className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg block transition-colors duration-300 flex text-black items-center ${pathname === "/manager/security_guard"
-              ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold"
+              ? "bg-gradient-to-r from-blue-600 to-blue-900 text-white font-semibold"
               : "hover:bg-gray-100"
               }`}
           >
-            {pathname.startsWith("/manager/security_guard") && (
+            {/* {pathname.startsWith("/manager/security_guard") && (
               <div className="absolute -left-4 top-0 bottom-0 w-2 bg-orange-600 rounded-r-lg"></div>
-            )}
+            )} */}
             <IoIosContact className="inline mr-2" />
-            Security Guard
+            Guard Monitoring
           </Link>
 
           <Link
             to="/manager/announcement"
             className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg block transition-colors duration-300 flex text-black items-center ${pathname === "/manager/announcement"
-              ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold"
+              ? "bg-gradient-to-r from-blue-600 to-blue-900 text-white font-semibold"
               : "hover:bg-gray-100"
               }`}
           >
-            {pathname.startsWith("/manager/announcement") && (
+            {/* {pathname.startsWith("/manager/announcement") && (
               <div className="absolute -left-4 top-0 bottom-0 w-2 bg-orange-600 rounded-r-lg"></div>
-            )}
+            )} */}
             <GrAnnounce className="inline mr-2" />
-            Announcement
+            Notices & Updates
           </Link>
         </div>
         <div className="border-t">
@@ -259,7 +259,7 @@ export default function Sidenav({ toggleNav, data }) {
             to="/"
             onClick={AdminLogout}
             className={`text-nowrap relative p-3 ms-4 m-2 rounded-lg text-lg block transition-colors duration-300 flex text-black text-red-600 items-center ${pathname === "/"
-              ? "bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-semibold"
+              ? "bg-gradient-to-r from-blue-600 to-blue-900 text-white font-semibold"
               : "hover:bg-gray-100"
               }`}
           >

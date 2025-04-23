@@ -18,7 +18,11 @@ import DeleteImportantNumbersModal from '../../../Modals/DeleteImportantNumbersM
 import LodingDelete from '../../../layout/DeleteLoding'
 import { DeleteComplaint } from '../../../services/Api/api';
 import useSidbarTogal from '../../../layout/useSidbarTogal';
-
+import {
+  MdAccountBalanceWallet,
+  MdMoneyOff,
+  MdPrecisionManufacturing,
+} from "react-icons/md";
 
 const Home = () => {
 
@@ -160,41 +164,44 @@ const Home = () => {
                 total_title="Total Balance"
                 total_price="2,22,520"
                 totle_color="text-white"
-                totle_icon_bg_back="bg-[#fff0e5]"
-                totle_icon_bg="bg-[#ff6a00]"
-                totle_bg_border="border-[#ff6a00]"
-                totle_Noch="bg-[#ffb480]"
-                totle_simbol={<TiThMenu />}
+                totle_icon_bg_back="bg-[#e3f2fd]" // Light Blue Background
+                totle_icon_bg="bg-[#1565c0]" // Darker Blue Icon
+                totle_bg_border="border-[#1565c0]"
+                totle_Noch="bg-[#bbdefb]" // Light Blue Line
+                totle_simbol={<MdAccountBalanceWallet />} // Wallet = Balance
               />
+
               <Home_totle_card
                 total_title="Total Income"
                 total_price="55,000"
                 totle_color="text-white"
-                totle_icon_bg_back="bg-[#ebf5ec]"
-                totle_icon_bg="bg-[#39973d]"
-                totle_Noch="bg-[#9ccb9e]"
-                totle_bg_border="border-[#39973d]"
-                totle_simbol={<MdOutlineAttachMoney />}
+                totle_icon_bg_back="bg-[#e1f5fe]" // Sky Blue Background
+                totle_icon_bg="bg-[#0288d1]" // Blue Icon
+                totle_bg_border="border-[#0288d1]"
+                totle_Noch="bg-[#81d4fa]" // Matching Sky Blue Line
+                totle_simbol={<MdOutlineAttachMoney />} // Money Icon = Income
               />
+
               <Home_totle_card
                 total_title="Total Expense"
                 total_price="20,550"
                 totle_color="text-white"
-                totle_icon_bg_back="bg-[#f3f5fe]"
-                totle_icon_bg="bg-[#869ff3]"
-                totle_Noch="bg-[#c3cff9]"
-                totle_bg_border="border-[#869ff3]"
-                totle_simbol={<MdOutlineAttachMoney />}
+                totle_icon_bg_back="bg-[#f3fafe]" // Super Light Blue Background
+                totle_icon_bg="bg-[#039be5]" // Blue Icon
+                totle_bg_border="border-[#039be5]"
+                totle_Noch="bg-[#b3e5fc]" // Very Light Blue Line
+                totle_simbol={<MdMoneyOff />} // Cross Money = Expense
               />
+
               <Home_totle_card
                 total_title="Total Unit"
                 total_price="20,550"
                 totle_color="text-white"
-                totle_icon_bg_back="bg-[#fdebf9]"
-                totle_icon_bg="bg-[#eb37c3]"
-                totle_Noch="bg-[#f59be1]"
-                totle_bg_border="border-[#eb37c3]"
-                totle_simbol={<MdOutlineAttachMoney />}
+                totle_icon_bg_back="bg-[#e8eaf6]" // Lavender Blue Background
+                totle_icon_bg="bg-[#3f51b5]" // Deep Blue Icon
+                totle_bg_border="border-[#3f51b5]"
+                totle_Noch="bg-[#c5cae9]" // Blue Tint Line
+                totle_simbol={<MdPrecisionManufacturing />} // Gears = Units
               />
             </div>
             {/* Graph and Important Numbers */}
