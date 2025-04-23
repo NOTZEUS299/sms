@@ -66,7 +66,7 @@ const Resident_Management = () => {
                 </h1>
                 <button
                   onClick={OpenResidenceStatus}
-                  className="px-4 py-2 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg font-semibold shadow-lg hover:from-orange-600 hover:to-yellow-600 transition duration-200"
+                  className="px-4 py-2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg transition duration-200"
                 >
                   Add New Resident details
                 </button>

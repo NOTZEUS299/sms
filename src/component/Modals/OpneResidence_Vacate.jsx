@@ -50,7 +50,7 @@ const OpneResidence_Vacate = ({ setShowResidence_Vacate,setShowResidenceStatusOn
                     </button>
                     <button
                         type="button"
-                        className="py-2 w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg font-semibold shadow-lg hover:from-orange-600 hover:to-yellow-600 transition duration-200"
+                        className="py-2 w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow-lg hover:from-orange-600 hover:to-yellow-600 transition duration-200"
                         onClick={handleSave}>
                         Create
                     </button>

@@ -204,177 +204,9 @@ const Home = () => {
                 totle_simbol={<MdPrecisionManufacturing />} // Gears = Units
               />
             </div>
-            {/* Graph and Important Numbers */}
-            <div className="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-1 gap-4">
-              <div className="bg-white rounded-lg max-[425px]:overflow-x-auto shadow-lg xl:col-span-2 col-span-1">
-                <TotalBalanceChart />
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-lg col-span-1">
-                <div className=" bg-white rounded-lg">
-                  <div className="flex justify-between items-center mb-5">
-                    <h2 className="text-lg font-semibold text-gray-800">Important Numbers</h2>
-                    <button
-                      onClick={openModal}
-                      className="flex items-center bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-                    >
-                      <FaPlus className="mr-2" />
-                      Add
-                    </button>
-                    {showModal && (<CreateImportantNumbers Fdata={Fdata} setShowModal={closeModal} />)}
-                  </div>
-                  <div className="space-y-4 h-80 overflow-y-auto pr-2">
-                    {loading ? (
-                      <div className='flex justify-center h-full items-center'>
-                        <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#4CC9FE]" />
-                      </div>
-                    ) : (
-                      <div className="space-y-4 max-h-80 overflow-y-auto pr-2">
-                        {contacts.map(contact => (
-                          <div
-                            key={contact._id}
-                            className="flex justify-between items-center p-4 border-2 border-gray-100 rounded-lg"
-                          >
-                            <div>
-                              <p className="text-sm font-medium">
-                                Name: <span className='text-[#a7a7a7]'>{contact.Fullname}</span>
-                              </p>
-                              <p className="text-sm">
-                                Phone Number: <span className='text-[#a7a7a7]'>{contact.Phonenumber}</span>
-                              </p>
-                              <p className="text-sm">
-                                Work: <span className='text-[#a7a7a7]'>{contact.Work}</span>
-                              </p>
-                            </div>
-                            <div className="flex space-x-2">
-                              <button
-                                onClick={() => OpnedeleteContact(contact._id)}
-                                className="text-red-500 hover:text-red-600"
-                              >
-                                <FaTrashAlt />
-                              </button>
-                              <button
-                                onClick={() => OpneeditModal(contact._id)}
-                                className="text-green-500 hover:text-green-600"
-                              >
-                                <FaEdit />
-                              </button>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                    {editModal && (<EditImportantNumbers Fdata={Fdata} _id={Important_id} closeEditModal={closeeditModal} />)}
-                    {ImportantNumbersDelete && (<DeleteImportantNumbersModal contacts={contacts} setContacts={setContacts} ClosedeleteContact={ClosedeleteContact} _id={ImportantNumbersDeleteId} />)}
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-lg col-span-1">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-lg font-semibold">Pending Maintenances</h2>
-                  <a href="#" className="text-blue-500 text-sm">View all</a>
-                </div>
-                <div className="space-y-4 overflow-y-auto h-96 px-2">
-                  <div>
-                    {/* Maintenance Item */}
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png" alt="User Avatar" />
-                        <div>
-                          <p className="font-medium">Roger Lubin</p>
-                          <p className="text-sm text-gray-500">2 Month Pending</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ 5,000</p>
-                    </div>
-                    {/* Repeat this block for each maintenance item */}
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png" alt="User Avatar" />
-                        <div>
-                          <p className="font-medium">Roger Lubin</p>
-                          <p className="text-sm text-gray-500">2 Month Pending</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ 5,000</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png" alt="User Avatar" />
-                        <div>
-                          <p className="font-medium">Roger Lubin</p>
-                          <p className="text-sm text-gray-500">2 Month Pending</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ 5,000</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png" alt="User Avatar" />
-                        <div>
-                          <p className="font-medium">Roger Lubin</p>
-                          <p className="text-sm text-gray-500">2 Month Pending</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ 5,000</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png" alt="User Avatar" />
-                        <div>
-                          <p className="font-medium">Roger Lubin</p>
-                          <p className="text-sm text-gray-500">2 Month Pending</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ 5,000</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png" alt="User Avatar" />
-                        <div>
-                          <p className="font-medium">Roger Lubin</p>
-                          <p className="text-sm text-gray-500">2 Month Pending</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ 5,000</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png" alt="User Avatar" />
-                        <div>
-                          <p className="font-medium">Roger Lubin</p>
-                          <p className="text-sm text-gray-500">2 Month Pending</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ 5,000</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png" alt="User Avatar" />
-                        <div>
-                          <p className="font-medium">Roger Lubin</p>
-                          <p className="text-sm text-gray-500">2 Month Pending</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ 5,000</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png" alt="User Avatar" />
-                        <div>
-                          <p className="font-medium">Roger Lubin</p>
-                          <p className="text-sm text-gray-500">2 Month Pending</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ 5,000</p>
-                    </div>
-                    {/* Add more items as needed */}
-                  </div>
-                </div>
-
-              </div>
-            </div>
+         
             {/* Complaint List and Upcoming Activity */}
-            <div className="grid xl:grid-cols-4 grid-cols-1 gap-4">
+            <div className="grid xl:grid-cols-1 grid-cols-1 gap-4">
               <div className="bg-white  xl:col-span-3 rounded-lg shadow">
                 <div className="bg-white  rounded-lg p-4">
                   <div className="flex justify-between items-center mb-4">
@@ -430,7 +262,7 @@ const Home = () => {
                                       e.Status === "Solve" ? "bg-[#ebf5ec] text-[#39973d]" : null
                                     }`}>{e.Status}</span>
                                 </td>
-                                <td className="px-4 py-2 flex space-x-2">
+                                <td className="px-4 py-2 flex space-x-2 justify-center">
                                   <button className="text-green-500 p-1" onClick={() => OpneEditComplint(e._id)}>
                                     <FaEdit />
                                   </button>
@@ -454,49 +286,138 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-white p-4 rounded-lg shadow">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-xl font-semibold">Upcoming Activity</h2>
-                  <select className="border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option>Month</option>
-                    <option>Week</option>
-                    <option>Day</option>
-                  </select>
-                </div>
-                {Loding ? (
-                  <div className='flex justify-center'>
-                    <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#4CC9FE]" />
-                  </div>
-                ) : (
-                  <div className="bg-white rounded-lg w-full h-32 overflow-auto px-2">
-                    <div className="space-y-4">
-                      {/* Dynamically render each activity item */}
-                      {activities.map((activity, index) => (
-                        <div className="flex items-center justify-between" key={index}>
-                          <div className="flex items-center space-x-3">
-                            {/* Use different colors for different activities based on type */}
-                            <div
-                              className={`w-8 h-8 flex items-center justify-center rounded-full ${activity.color ? `bg-${activity.color}-100` : 'bg-slate-200'
-                                }  'gray-600' font-bold`}
-                            >
-                              {getFirstLetter(activity.title)}
-                            </div>
-                            <div>
-                              <p className="text-gray-900 font-medium">{activity.title}</p>
-                              <p className="text-gray-500 text-sm">{activity.time}</p>
-                            </div>
-                          </div>
-                          <p className="text-gray-500 text-sm"> {new Date(activity.date).toLocaleDateString("en-US", {
-                            day: "2-digit",
-                            month: "2-digit",
-                            year: "numeric",
-                          })}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+             
+            </div>
+               {/* Graph and Important Numbers */}
+            <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-4">  
+          <div className="bg-white p-5 rounded-xl shadow-md col-span-1">
+  <div className="bg-white rounded-xl">
+    {/* Header Section with Fixed Button Alignment */}
+    <div className="flex flex-wrap justify-between items-center gap-2 mb-4">
+      <h2 className="text-xl font-semibold text-gray-800">Support Directory</h2>
+      <div>
+        <button
+          onClick={openModal}
+          className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          <FaPlus className="mr-2" />
+          Add Contact
+        </button>
+        {showModal && (
+          <CreateImportantNumbers Fdata={Fdata} setShowModal={closeModal} />
+        )}
+      </div>
+    </div>
+
+    {/* Contact List Section */}
+    <div className="space-y-4 h-80 overflow-y-auto pr-2">
+      {loading ? (
+        <div className="flex justify-center h-full items-center">
+          <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-blue-500" />
+        </div>
+      ) : (
+        <div className="space-y-4 max-h-80 overflow-y-auto pr-2">
+          {contacts.map((contact) => (
+            <div
+              key={contact._id}
+              className="flex justify-between items-start p-4 border border-gray-200 rounded-md shadow-sm hover:shadow-md transition"
+            >
+              <div className="space-y-1">
+                <p className="text-sm font-medium text-gray-700">
+                  Name: <span className="text-gray-500">{contact.Fullname}</span>
+                </p>
+                <p className="text-sm text-gray-700">
+                  Phone: <span className="text-gray-500">{contact.Phonenumber}</span>
+                </p>
+                <p className="text-sm text-gray-700">
+                  Role: <span className="text-gray-500">{contact.Work}</span>
+                </p>
               </div>
+              <div className="flex space-x-3 pt-1">
+                <button
+                  onClick={() => OpnedeleteContact(contact._id)}
+                  className="text-red-500 hover:text-red-600 transition"
+                  title="Delete"
+                >
+                  <FaTrashAlt />
+                </button>
+                <button
+                  onClick={() => OpneeditModal(contact._id)}
+                  className="text-blue-600 hover:text-blue-700 transition"
+                  title="Edit"
+                >
+                  <FaEdit />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {editModal && (
+        <EditImportantNumbers
+          Fdata={Fdata}
+          _id={Important_id}
+          closeEditModal={closeeditModal}
+        />
+      )}
+
+      {ImportantNumbersDelete && (
+        <DeleteImportantNumbersModal
+          contacts={contacts}
+          setContacts={setContacts}
+          ClosedeleteContact={ClosedeleteContact}
+          _id={ImportantNumbersDeleteId}
+        />
+      )}
+    </div>
+  </div>
+</div>
+<div className="bg-white p-5 rounded-xl shadow-md col-span-1">
+  <div className="flex justify-between items-center mb-4">
+    <h2 className="text-lg font-semibold text-gray-800">Pending Maintenances</h2>
+    <a href="#" className="text-blue-600 text-sm hover:underline">View all</a>
+  </div>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 h-[500px] overflow-y-auto pr-1">
+    
+    {/* Card 1 */}
+    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-md shadow-sm border hover:shadow-md transition h-[80px]">
+      <div className="flex items-center space-x-3">
+        <img
+          className="w-9 h-9 rounded-full object-cover"
+          src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
+          alt="User"
+        />
+        <div className="leading-tight">
+          <p className="text-sm font-semibold text-gray-800">Roger Lubin</p>
+          <p className="text-xs text-gray-500">2 Month Pending</p>
+        </div>
+      </div>
+      <p className="text-red-600 font-semibold text-sm whitespace-nowrap">₹ 5,000</p>
+    </div>
+
+    {/* Repeat for other cards — just copy this block */}
+    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-md shadow-sm border hover:shadow-md transition h-[80px]">
+      <div className="flex items-center space-x-3">
+        <img
+          className="w-9 h-9 rounded-full object-cover"
+          src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
+          alt="User"
+        />
+        <div className="leading-tight">
+          <p className="text-sm font-semibold text-gray-800">Meera Shah</p>
+          <p className="text-xs text-gray-500">1 Month Pending</p>
+        </div>
+      </div>
+      <p className="text-red-600 font-semibold text-sm whitespace-nowrap">₹ 2,500</p>
+    </div>
+
+    {/* Add more cards as needed... */}
+
+  </div>
+</div>
+
             </div>
           </div>
         </main>
