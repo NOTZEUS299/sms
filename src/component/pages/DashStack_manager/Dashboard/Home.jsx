@@ -171,7 +171,7 @@ const Home = () => {
     return title ? title.charAt(0).toUpperCase() : ""; // Get the first letter and capitalize it
   };
   return (
-    <div>
+    <div className="capitalize">
       <Sidebar toggleNav={toggleNav} data={data} />
       <div id="main" className={`ml-[${getdata}px] max-[425px]:ml-0`}>
         <div className="open_he">
@@ -368,7 +368,67 @@ const Home = () => {
               </div>
             </div>
             {/* Graph and Important Numbers */}
-            <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-4">
+            <div className="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-1 gap-4">
+              <div className="bg-white p-5 rounded-xl shadow-md col-span-2">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-lg font-semibold text-gray-800">
+                    Visitors Log
+                  </h2>
+                  <a href="#" className="text-blue-600 text-sm hover:underline">
+                    View all
+                  </a>
+                </div>
+                <div>
+                  <table className="min-w-full bg-[#eef1fd] rounded-lg ">
+                    <thead>
+                      <tr>
+                        <th className="px-6 py-3 border-b font-medium text-left">
+                          Visitor Name
+                        </th>
+                        <th className="px-6 py-3 border-b font-medium ">
+                          Phone Number
+                        </th>
+                        <th className="px-6 py-3 border-b font-medium ">
+                          Date
+                        </th>
+                        <th className="px-6 py-3 border-b font-medium ">
+                          Unit Number
+                        </th>
+                        <th className="px-6 py-3 border-b font-medium ">
+                          Time
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white">
+                      <tr>
+                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 flex items-center">
+                          <img
+                            className="w-8 h-8 rounded-full mr-1"
+                            src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
+                            alt="profile"
+                          />
+                          <span>Vj</span>
+                        </td>
+                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 truncate text-center">
+                          123456789
+                        </td>
+                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 truncate text-center">
+                          05/05/2222
+                        </td>
+                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 truncate text-center">
+                          <samp className=" px-2 py-1 text-[#5678e9] bg-[#f6f8fb] mr-2 rounded-full">
+                            A
+                          </samp>
+                          1001
+                        </td>
+                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 truncate text-center">
+                          2:50 AM
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
               <div className="bg-white p-5 rounded-xl shadow-md col-span-1">
                 <div className="bg-white rounded-xl">
                   {/* Header Section with Fixed Button Alignment */}
@@ -475,8 +535,7 @@ const Home = () => {
                     View all
                   </a>
                 </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 h-[500px] overflow-y-auto pr-1">
+                <div className="grid grid-cols-1 sm:grid-cols-1 gap-3 overflow-y-auto pr-1">
                   {/* Card 1 */}
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded-md shadow-sm border hover:shadow-md transition h-[80px]">
                     <div className="flex items-center space-x-3">
