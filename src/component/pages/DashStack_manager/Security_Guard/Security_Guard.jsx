@@ -90,7 +90,7 @@ const Security_Guard = () => {
             <div className="bg-white shadow-md rounded-lg p-6">
               <div className="flex justify-between items-center mb-6">
                 <h1 className='font-semibold md:text-2xl text-md'>Security Guard Details</h1>
-                <button onClick={OpneAddSecurity} className="px-4 py-2 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow-lg hover:from-orange-600 hover:to-yellow-600 transition duration-200">
+                <button onClick={OpneAddSecurity} className="px-4 py-2 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow-lg hover:from-blue-600 hover:to-blue-400 transition duration-200">
                   Add Security
                 </button>
                 {AddSecurity && (<AddSecurityModal CloseAddSecurity={CloseAddSecurity} Fdata={Fdata} />)}

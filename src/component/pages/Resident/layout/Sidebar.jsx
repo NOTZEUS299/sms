@@ -98,9 +98,6 @@ export default function Sidenav({ toggleNav, data }) {
               }`}
           >
             {/* Active Indicator */}
-            {/* {pathname.startsWith("/resident/community") && (
-              <div className="absolute -left-4 top-0 bottom-0 w-2 bg-orange-600 rounded-r-lg"></div>
-            )} */}
             <RiCommunityFill className="inline mr-2" />
             Community
           </Link>

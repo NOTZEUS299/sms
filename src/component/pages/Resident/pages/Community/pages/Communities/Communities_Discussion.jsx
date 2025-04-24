@@ -161,7 +161,7 @@ const Communities_Discussion = () => {
 
 
                 <div className="flex items-center space-x-4">
-                  <button className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-2 rounded-lg font-semibold">
+                  <button className="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-4 py-2 rounded-lg font-semibold">
                     Ask Question
                   </button>
                   <FiMoreVertical className="text-gray-500 cursor-pointer" size={24} />
@@ -191,7 +191,7 @@ const Communities_Discussion = () => {
                   placeholder="Type your message..."
                   className="flex-grow p-3 border rounded-l-lg focus:outline-none"
                 />
-                <button className="bg-gradient-to-r from-orange-400 to-red-500 text-white font-semibold  px-5 py-4 rounded-r-lg w-20 md:w-auto flex "> <IoMdSend className='mr-1 mt-1' /> Send</button>
+                <button className="bg-gradient-to-r from-blue-400 to-blue-600 text-white font-semibold  px-5 py-4 rounded-r-lg w-20 md:w-auto flex "> <IoMdSend className='mr-1 mt-1' /> Send</button>
               </div>
             </div>
           </div>
