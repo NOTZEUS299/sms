@@ -18,7 +18,7 @@ import {
   MdMoneyOff,
   MdPrecisionManufacturing,
 } from "react-icons/md";
-
+import { GetMaintenance } from "../../../Resident/Api/api";
 const Home = () => {
   const [isOpen, setIsOpen] = useState(true);
   let [data, setdata] = useState(280);
@@ -108,6 +108,18 @@ const Home = () => {
   const getFirstLetter = (title) => {
     return title ? title.charAt(0).toUpperCase() : ""; // Get the first letter and capitalize it
   };
+  // maintance
+
+  const [maintenanceData, setMaintenanceData] = useState([]);
+const [loadingMaintenance, setLoadingMaintenance] = useState(true);
+
+useEffect(() => {
+  GetMaintenance((data) => {
+    console.log("Maintenance Data:", data); // 👀 log here
+    setMaintenanceData(data);
+    setLoadingMaintenance(false);
+  });
+}, []);
 
   return (
     <div className="bg-[#f0f5fb] h-full">
@@ -319,59 +331,73 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-lg col-span-1">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg text-blue-600 font-semibold">
-                  Pending Maintenances
-                </h2>
-                <a href="#" className="text-blue-500 text-sm">
-                  View all
-                </a>
+            <div className="bg-white rounded-2xl shadow-xl p-6 col-span-1">
+  {/* Header */}
+  <div className="flex items-center justify-between mb-6">
+    <h2 className="text-xl font-bold text-blue-700">Pending Maintenances</h2>
+    <a href="#" className="text-blue-500 hover:underline text-sm font-medium">
+      View All
+    </a>
+  </div>
+
+  {/* Scrollable Content */}
+  <div className="h-[25rem] overflow-y-auto pr-1 custom-scrollbar">
+    {loadingMaintenance ? (
+      <div className="flex justify-center items-center h-full">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-400" />
+      </div>
+    ) : maintenanceData.length === 0 ? (
+      <div className="text-center text-gray-500 py-12">
+        No maintenance records found.
+      </div>
+    ) : (
+      <div className="flex flex-col gap-4">
+        {maintenanceData.map((item) => (
+          <div
+            key={item._id}
+            className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-all duration-200"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-lg font-bold text-blue-600 truncate max-w-[60%]">
+                ₹{item.Maintenance_Amount}
+              </h3>
+              <span className="text-xs font-semibold text-blue-600 bg-blue-100 px-3 py-1 rounded-full whitespace-nowrap">
+                Maintenance
+              </span>
+            </div>
+
+            <div className="text-sm text-gray-700 space-y-1">
+              <div className="flex justify-between text-ellipsis overflow-hidden">
+                <span className="font-medium">Penalty:</span>
+                <span>₹{item.Penalty_Amount}</span>
               </div>
-              <div className="space-y-4 overflow-y-auto w-full h-96 px-2">
-                {PendingData.length > 0 ? (
-                  PendingData.map((e, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          src={
-                            e.avatar ||
-                            "https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
-                          }
-                          alt={`${e.name}'s avatar`}
-                        />
-                        <div>
-                          <p className="font-medium">{e.Name}</p>
-                          <p className="text-sm text-gray-500">{e.Status}</p>
-                        </div>
-                      </div>
-                      <p className="text-red-500 font-semibold">₹ {e.Amount}</p>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center text-gray-500">
-                    No pending data available.
-                  </p>
-                )}
+              <div className="flex justify-between">
+                <span className="font-medium">Due Date:</span>
+                <span>{new Date(item.Maintenance_Due_Date).toLocaleDateString()}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-medium">Penalty After:</span>
+                <span>{item.Penalty_Applied_After_Day_Selection} days</span>
               </div>
             </div>
+
+            <button className="mt-4 w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white font-semibold py-2 rounded-xl shadow hover:scale-[1.02] transition-all">
+              Pay Now
+            </button>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</div>
+
             <div className="bg-white p-4 rounded-lg shadow-lg col-span-1">
               <div className=" bg-white rounded-lg">
                 <div className="flex justify-between items-center mb-5">
                   <h2 className="text-lg text-blue-600 font-semibold">
                     Upcoming Bookings
                   </h2>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-lg col-span-1">
-              <div className=" bg-white rounded-lg">
-                <div className="flex justify-between items-center mb-5">
-                  <h2 className="text-lg text-blue-600 font-semibold">Facility</h2>
+
                 </div>
                 <div className="mt-6">
   {loading ? (
@@ -408,6 +434,48 @@ const Home = () => {
     </div>
   )}
 </div>
+              </div>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-lg col-span-1">
+              <div className=" bg-white rounded-lg">
+                
+        <h2 className="text-lg text-blue-600 font-semibold mb-4">Upcoming Activity</h2>
+                <div className="bg-white p-4 rounded-lg shadow">
+    
+      {Loding ? (
+                  <div className='flex justify-center'>
+                  <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#4CC9FE]" />
+                </div>
+                ): (
+        <div className="space-y-4">
+          {/* Dynamically render each activity item */}
+          {activities.map((activity, index) => (
+            <div className="flex items-center justify-between" key={index}>
+              <div className="flex items-center space-x-3">
+                {/* Use different colors for different activities based on type */}
+                <div
+                  className={`w-8 h-8 flex items-center justify-center rounded-full ${
+                    activity.color ? `bg-${activity.color}-100` : 'bg-slate-200'
+                  }  'gray-600' font-bold`}
+                >
+                  {getFirstLetter(activity.title)}
+                </div>
+                <div>
+                  <p className="text-gray-900 font-medium">{activity.title}</p>
+                  <p className="text-gray-500 text-sm">{activity.time}</p>
+                </div>
+              </div>
+              <p className="text-gray-500 text-sm"> {new Date(activity.date).toLocaleDateString("en-US", {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                            })}</p>
+            </div>
+          ))}
+        </div>
+     
+            ) }
+    </div>
               </div>
             </div>
           </div>

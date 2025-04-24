@@ -35,7 +35,7 @@ export const AnnouncementGet = (setAnnouncement) =>{
 // Pending Maintenances
 
 export const Get_Pending_Maintenances = (setPendingData) => {
-  axios.get('http://localhost:3030/PendingMaintenances').then((res) => {
+  axios.get('http://localhost:8080/PendingMaintenances').then((res) => {
     setPendingData(res.data)
   })
 }
@@ -118,7 +118,7 @@ export const DeleteRequest_Submission = (data, setdata, closeDelete, DId, setloa
 // Maintenance_Invoices page
 // Pending Maintanance Get
 export const Get_Pending_Maintanance = (setMaintanance) => {
-  axios.get('http://localhost:3030/Pending_Maintanance').then((res) => {
+  axios.get('http://localhost:8080/Pending_Maintanance').then((res) => {
     setMaintanance(res.data);
   });
 }
@@ -126,22 +126,29 @@ export const Get_Pending_Maintanance = (setMaintanance) => {
 // Pending Maintanance User Data Get
 
 export const Get_Maintenance_Invoices_data = () => {
-  axios.get('http://localhost:3030/Maintenance_Invoices_data').then((res) => {
+  axios.get('http://localhost:8080/Maintenance_Invoices_data').then((res) => {
     setgetInvoices(res.data);
   });
 }
 
+//  Maintenance
+
+export const GetMaintenance = (setudata) => {
+  axios.get(`${url}/maintenance/getAllmaintenances`).then((res) => {
+      setudata(res.data)
+  })
+}
 
 // EventData
 export const GetEventData = (setEventData) => {
-  axios.get('http://localhost:3030/EventData').then((res) => {
+  axios.get('http://localhost:8080/EventData').then((res) => {
     // console.log(res.data);
     setEventData(res.data)
   })
 }
 
 export const GetActivityData = (setActivityData) => {
-  axios.get('http://localhost:3030/ActivityData').then((res) => {
+  axios.get('http://localhost:8080/ActivityData').then((res) => {
     // console.log(res.data);
     setActivityData(res.data)
   })
@@ -149,7 +156,7 @@ export const GetActivityData = (setActivityData) => {
 
 //Polls 
 export const GetOwnPoll = async () => {
-  const res = await axios.get('http://localhost:3030/OwnPoll');
+  const res = await axios.get('http://localhost:8080/OwnPoll');
   return res.data;
 };
 
@@ -157,7 +164,7 @@ export const GetOwnPoll = async () => {
 export const PostOwnpoll = (data, Fdata, closeCreatePoll) => {
   console.log(data);
 
-  axios.post(`http://localhost:3030/OwnPoll`, data).then((res) => {
+  axios.post(`http://localhost:8080/OwnPoll`, data).then((res) => {
     closeCreatePoll(false)
     Fdata()
   })
@@ -166,12 +173,12 @@ export const PostOwnpoll = (data, Fdata, closeCreatePoll) => {
 
 
 export const GetNewPoll = async () => {
-  const res = await axios.get('http://localhost:3030/OwnPoll');
+  const res = await axios.get('http://localhost:8080/OwnPoll');
   return res.data;
 };
 
 export const GetPreviousPoll = async () => {
-  const res = await axios.get('http://localhost:3030/OwnPoll');
+  const res = await axios.get('http://localhost:8080/OwnPoll');
   return res.data;
 };
 
