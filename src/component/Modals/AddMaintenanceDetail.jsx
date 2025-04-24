@@ -34,7 +34,7 @@ const AddMaintenanceDetail = ({ setShowAddDetail , Fdata }) => {
                   type="number"
                   placeholder="1,000"
                   className="w-full p-2 border-none focus:outline-none text-gray-700"
-                  {...register("Maintenance_Amount", { required: true })}
+                  {...register("maintenanceAmount", { required: true })}
                 />
               </div>
               {errors.maintenanceAmount && <span className="text-red-500">This field is required</span>}
@@ -48,7 +48,7 @@ const AddMaintenanceDetail = ({ setShowAddDetail , Fdata }) => {
                   type="number"
                   placeholder="250"
                   className="w-full p-2 border-none focus:outline-none text-gray-700"
-                  {...register("Penalty_Amount", { required: true })}
+                  {...register("penaltyAmount", { required: true })}
                 />
               </div>
               {errors.penaltyAmount && <span className="text-red-500">This field is required</span>}
@@ -62,7 +62,7 @@ const AddMaintenanceDetail = ({ setShowAddDetail , Fdata }) => {
                 type="date"
                 className="w-full p-2 border-none focus:outline-none text-gray-700"
                 min={today} // Disable past dates
-                {...register("Maintenance_Due_Date", { required: true })}
+                {...register("maintenanceDueDate", { required: true })}
               />
             </div>
             {errors.dueDate && <span className="text-red-500">This field is required</span>}
@@ -72,7 +72,7 @@ const AddMaintenanceDetail = ({ setShowAddDetail , Fdata }) => {
             <label className="block text-gray-700 mb-2 font-semibold">Penalty Applied After Day Selection</label>
             <select
               className="w-full p-2 border rounded focus:outline-none text-gray-700"
-              {...register("Penalty_Applied_After_Day_Selection", { required: true })}
+              {...register("penaltyAppliedAfterDaySelection", { required: true })}
             >
               <option value="" disabled>Select Penalty Applied After Day Selection</option>
               <option value="1">1 Day</option>

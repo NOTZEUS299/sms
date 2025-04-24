@@ -652,7 +652,7 @@ export const Facility_Management_Edit = (_id, data, setloading, seteditcreate_fa
 //  Maintenance
 
 export const GetMaintenance = (setudata) => {
-    axios.get(`${url}/maintenance/getAllaintenances`).then((res) => {
+    axios.get(`${url}/maintenance/getAllmaintenances`).then((res) => {
         setudata(res.data)
     })
 }

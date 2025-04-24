@@ -35,6 +35,7 @@ import DeleteImportantNumbersModal from "../../../Modals/DeleteImportantNumbersM
 import LodingDelete from "../../../layout/DeleteLoding";
 import { DeleteComplaint } from "../../../services/Api/api";
 import useSidbarTogal from "../../../layout/useSidbarTogal";
+import { GetMaintenance } from "../../../services/Api/api";
 import {
   MdAccountBalanceWallet,
   MdMoneyOff,
@@ -65,6 +66,19 @@ const Home = () => {
   const Fdata = () => {
     ImportantNumbersGet(setContacts, setLoading);
   };
+
+  // maintance
+
+  const [maintenanceData, setMaintenanceData] = useState([]);
+const [loadingMaintenance, setLoadingMaintenance] = useState(true);
+
+useEffect(() => {
+  GetMaintenance((data) => {
+    console.log("Maintenance Data:", data); // 👀 log here
+    setMaintenanceData(data);
+    setLoadingMaintenance(false);
+  });
+}, []);
 
   // add numbers pop_up
 
@@ -578,8 +592,58 @@ const Home = () => {
 
                   {/* Add more cards as needed... */}
                 </div>
+                
               </div>
+          
+
             </div>
+            <div className="mt-6">
+  <h2 className="text-xl font-semibold mb-4 text-gray-700">Maintenance Details</h2>
+
+  {loadingMaintenance ? (
+    <div className="flex justify-center items-center py-6">
+      <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-400" />
+    </div>
+  ) : maintenanceData.length === 0 ? (
+    <p className="text-gray-500">No maintenance records found.</p>
+  ) : (
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {maintenanceData.map((item) => (
+        <div
+          key={item._id}
+          className="bg-white rounded-2xl shadow-md hover:shadow-lg border border-gray-100 p-6 transition duration-200"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-blue-600">₹{item.Maintenance_Amount}</h3>
+            <span className="bg-blue-100 text-blue-600 text-xs font-medium px-3 py-1 rounded-full">
+              Maintenance
+            </span>
+          </div>
+
+          <div className="space-y-2 text-sm text-gray-600">
+            <div className="flex justify-between">
+              <span className="font-medium">Penalty:</span>
+              <span>₹{item.Penalty_Amount}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="font-medium">Due Date:</span>
+              <span>{new Date(item.Maintenance_Due_Date).toLocaleDateString()}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="font-medium">Penalty After:</span>
+              <span>{item.Penalty_Applied_After_Day_Selection} days</span>
+            </div>
+          </div>
+
+          <button className="mt-4 w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white font-semibold py-2 rounded-xl shadow hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-blue-300 transition-all">
+            Pay Now
+          </button>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
           </div>
         </main>
       </div>

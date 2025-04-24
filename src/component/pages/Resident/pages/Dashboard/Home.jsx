@@ -7,6 +7,7 @@ import { MdOutlineAttachMoney } from "react-icons/md";
 import TotalBalanceChart from "../../../../layout/TotalBalanceChart";
 import {
   GetAnnouncement,
+  Facility_Management_Get,
   GetComplainy,
   ImportantNumbersGet,
 } from "../../../../services/Api/api";
@@ -88,14 +89,20 @@ const Home = () => {
   };
 
   const [activities, setActivities] = useState([]);
+  const [facility, setFacility] = useState([]);
   const [Loding, setLoding] = useState(true);
 
   useEffect(() => {
     fetchActivities();
+    fetchFacility();
   }, []);
 
   const fetchActivities = async () => {
     GetAnnouncement(setActivities, setLoding);
+  };
+
+  const fetchFacility = async () => {
+    Facility_Management_Get(setFacility, setLoding);
   };
 
   const getFirstLetter = (title) => {
@@ -364,8 +371,43 @@ const Home = () => {
             <div className="bg-white p-4 rounded-lg shadow-lg col-span-1">
               <div className=" bg-white rounded-lg">
                 <div className="flex justify-between items-center mb-5">
-                  <h2 className="text-lg text-blue-600 font-semibold">Polls</h2>
+                  <h2 className="text-lg text-blue-600 font-semibold">Facility</h2>
                 </div>
+                <div className="mt-6">
+  {loading ? (
+    <div className="flex justify-center h-full items-center">
+      <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-400" />
+    </div>
+  ) : (
+    <div className="grid grid-cols-1 gap-4 max-h-[24rem] overflow-y-auto pr-2">
+      {facility.map((facility) => (
+        <div
+          key={facility._id}
+          className="flex items-start p-5 bg-white border border-gray-200 shadow-md rounded-2xl hover:shadow-lg transition duration-200"
+        >
+          <div className="flex flex-col space-y-2 w-full">
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-gray-400">Facility Name</span>
+            </div>
+            <p className="text-lg font-semibold text-gray-800">{facility.Facility_Name}</p>
+
+            <div className="flex items-center space-x-2 pt-2">
+              <span className="text-sm text-gray-400">Description</span>
+            </div>
+            <p className="text-base text-gray-700">{facility.Description}</p>
+
+            <div className="flex items-center space-x-2 pt-2">
+              <span className="text-sm text-gray-400">Scheduled Date</span>
+            </div>
+            <p className="text-base text-gray-700">
+              {new Date(facility.Schedule_Service_Date).toLocaleDateString()}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
               </div>
             </div>
           </div>
