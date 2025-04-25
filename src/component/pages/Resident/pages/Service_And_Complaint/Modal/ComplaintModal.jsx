@@ -32,7 +32,7 @@ const ComplaintModal = ({ close ,Fdata}) => {
         <div className='fixed inset-0 bg-black bg-opacity-30 flex justify-center items-center z-50'>
             <div className="p-6 bg-white rounded-lg shadow-md max-w-md w-full mx-auto relative z-60">
                 <div className="flex mb-2 pb-2 justify-between items-center border-b">
-                    <h2 className="text-xl font-semibold">Detail of the Per Person</h2>
+                    <h2 className="text-xl font-semibold">Create Complain</h2>
                     <button type="button" className="text-gray-600 hover:text-gray-800 text-2xl" onClick={close}>
                         &times;
                     </button>
