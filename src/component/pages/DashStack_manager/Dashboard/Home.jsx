@@ -21,6 +21,9 @@ ChartJS.register(
 );
 import { FaTrashAlt, FaEdit, FaPlus } from "react-icons/fa";
 import {
+  GetOtherIncome,
+  GetExpanse,
+  GetResident,
   GetAnnouncement,
   GetComplainy,
   ImportantNumbersGet,
@@ -65,6 +68,48 @@ const Home = () => {
 
   const Fdata = () => {
     ImportantNumbersGet(setContacts, setLoading);
+  };
+
+//other incoms
+
+const [otherIncomeData, setOtherIncomeData] = useState([]);
+const [loadingIncome, setLoadingIncome] = useState(true);
+
+useEffect(() => {
+  GetOtherIncome(setOtherIncomeData, setLoadingIncome);
+}, []);
+
+const totalIncome = otherIncomeData.reduce((sum, income) => {
+  const amt = parseFloat(income.Amount) || 0; // Make sure it’s a valid number
+  return sum + amt;
+}, 0);
+
+
+  //expance data 
+
+  const [expenseData, setExpenseData] = useState([]);
+const [loadingExpense, setLoadingExpense] = useState(true);
+
+useEffect(() => {
+  GetExpanse(setExpenseData, setLoadingExpense);
+}, []);
+
+const totalAmount = expenseData.reduce((sum, expense) => {
+  const amt = parseFloat(expense.Amount) || 0; // fallback to 0 if NaN
+  return sum + amt;
+}, 0);
+
+  //resident data
+
+  const [residentData, setResidentData] = useState([]);
+  const [loadingResident, setLoadingResident] = useState(true);
+
+  useEffect(() => {
+    getResidentData();
+  }, []);
+
+  const getResidentData = () => {
+    GetResident(setResidentData, setLoadingResident);
   };
 
   // maintance
@@ -184,6 +229,8 @@ useEffect(() => {
   const getFirstLetter = (title) => {
     return title ? title.charAt(0).toUpperCase() : ""; // Get the first letter and capitalize it
   };
+  const totalBalance = totalIncome - totalAmount;
+
   return (
     <div className="capitalize">
       <Sidebar toggleNav={toggleNav} data={data} />
@@ -197,7 +244,8 @@ useEffect(() => {
             <div className="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 max-[425px]:grid-cols-2 gap-4">
               <Home_totle_card
                 total_title="Total Balance"
-                total_price="2,22,520"
+                total_price={loadingIncome || loadingExpense ? "..." : `₹${totalBalance.toLocaleString()}`}
+
                 totle_color="text-white"
                 totle_icon_bg_back="bg-[#e3f2fd]" // Light Blue Background
                 totle_icon_bg="bg-[#2563eb]" // Darker Blue Icon
@@ -207,8 +255,8 @@ useEffect(() => {
               />
 
               <Home_totle_card
-                total_title="Total Income"
-                total_price="55,000"
+                total_title="Total Other Income"
+                total_price={loadingIncome ? "..." : `₹${totalIncome.toLocaleString()}`}
                 totle_color="text-white"
                 totle_icon_bg_back="bg-[#e1f5fe]" // Sky Blue Background
                 totle_icon_bg="bg-[#2563eb]" // Blue Icon
@@ -217,27 +265,27 @@ useEffect(() => {
                 totle_simbol={<MdOutlineAttachMoney />} // Money Icon = Income
               />
 
-              <Home_totle_card
+<Home_totle_card
                 total_title="Total Expense"
-                total_price="20,550"
+                total_price={loadingExpense ? "..." : `₹${totalAmount.toLocaleString()}`}
                 totle_color="text-white"
                 totle_icon_bg_back="bg-[#f3fafe]" // Super Light Blue Background
                 totle_icon_bg="bg-[#2563eb]" // Blue Icon
-                totle_bg_border="border-[#039be5]"
+                totle_bg_border="border-[#039b3f51b5e5]"
                 totle_Noch="bg-[#2563eb]" // Very Light Blue Line
                 totle_simbol={<MdMoneyOff />} // Cross Money = Expense
               />
 
-              <Home_totle_card
-                total_title="Total Unit"
-                total_price="20,550"
-                totle_color="text-white"
-                totle_icon_bg_back="bg-[#e8eaf6]" // Lavender Blue Background
-                totle_icon_bg="bg-[#2563eb]" // Deep Blue Icon
-                totle_bg_border="border-[#3f51b5]"
-                totle_Noch="bg-[#2563eb]" // Blue Tint Line
-                totle_simbol={<MdPrecisionManufacturing />} // Gears = Units
-              />
+<Home_totle_card
+  total_title="Total Unit"
+  total_price={loadingResident ? "..." : residentData.length} // 👈 Dynamic count
+  totle_color="text-white"
+  totle_icon_bg_back="bg-[#e8eaf6]"
+  totle_icon_bg="bg-[#2563eb]"
+  totle_bg_border="border-[#3f51b5]"
+  totle_Noch="bg-[#2563eb]"
+  totle_simbol={<MdPrecisionManufacturing />}
+/>
             </div>
 
             {/* Complaint List and Upcoming Activity */}

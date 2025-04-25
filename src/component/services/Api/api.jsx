@@ -288,12 +288,19 @@ export const updateImportantNumber = (_id, editNumber, Fdata, closeEditModal, se
 
 // Resident Management page Get
 
-export const GetResident = (setSumdata) => {
-    axios.get(`${url}/resident/getall`).then((res) => {
-        console.log(res.data)
-        setSumdata(res.data)
-    })
-}
+export const GetResident = (setSumdata, setLoading) => {
+    axios.get(`${url}/resident/getall`)
+      .then((res) => {
+        console.log(res.data);
+        setSumdata(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching resident data", err);
+      })
+      .finally(() => {
+        setLoading(false); // ✅ Stop loading spinner/dots
+      });
+  };
 
 // Resident Management page Get /id
 
@@ -667,12 +674,19 @@ export const PostIncome = (data, Fdata, setShowAddDetail) => {
 
 //Other Income
 
-export const GetOtherIncome = (setCreateIncome) => {
-    axios.get(`${url}/otherincome/getAllOtherincome`).then((res) => {
+export const GetOtherIncome = (setCreateIncome, setLoading) => {
+    axios.get(`${url}/otherincome/getAllOtherincome`)
+      .then((res) => {
         console.log(res.data);
-        setCreateIncome(res.data)
-    })
-}
+        setCreateIncome(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching other income", err);
+      })
+      .finally(() => {
+        setLoading(false); // Stop loading once data is fetched
+      });
+  };
 
 export const PostOtherIncome = (data, Fdata, setCreateIncome) => {
     axios.post(`${url}/otherincome/createOtherincome`, data).then((res) => {
@@ -709,11 +723,18 @@ export const DeleteOtherIncome = (DeleteId, incomeData, setIncomeData, closeDele
 };
 ///Expanse
 
-export const GetExpanse = (setAddExpense) => {
-    axios.get(`${url}/expenses/getAllexpensess`).then((res) => {
-        setAddExpense(res.data)
-    })
-}
+export const GetExpanse = (setAddExpense, setLoading) => {
+    axios.get(`${url}/expenses/getAllexpensess`)
+      .then((res) => {
+        setAddExpense(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching expenses", err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
 export const PostExpanse = async (data, Fdata, setAddExpense, setPreviewImage, reset, handleCancel, setLoading) => {
     console.log(data.Bill);

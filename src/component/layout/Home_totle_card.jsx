@@ -15,7 +15,7 @@ const Home_totle_card = (props) => {
             {props.total_title}
           </p>
           <p className="text-2xl font-bold text-gray-800 sm:text-xl max-[365px]:text-lg">
-            ₹ {props.total_price}
+            {props.total_price}
           </p>
         </div>
 
