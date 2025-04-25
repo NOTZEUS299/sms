@@ -6,12 +6,13 @@ import { TiThMenu } from "react-icons/ti";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import TotalBalanceChart from "../../../../layout/TotalBalanceChart";
 import {
+  
   GetAnnouncement,
   Facility_Management_Get,
   GetComplainy,
   ImportantNumbersGet,
 } from "../../../../services/Api/api";
-import { Get_Pending_Maintenances } from "../../Api/api";
+import { Get_Profile_img,Get_Pending_Maintenances } from "../../Api/api";
 import useSidbarTogal from "../../../../layout/useSidbarTogal";
 import {
   MdAccountBalanceWallet,
@@ -121,6 +122,19 @@ useEffect(() => {
   });
 }, []);
 
+
+  const [FormData, setFormData] = useState({ members: [], vehicles: [] })
+
+  useEffect(() => {
+    VFdata();
+  }, []);
+
+  const VFdata = () => {
+    Get_Profile_img((data) => {
+      setFormData(data || { members: [], vehicles: [] });
+    });
+  };
+
   return (
     <div className="bg-[#f0f5fb] h-full">
       <Sidebar toggleNav={toggleNav} data={data} />
@@ -225,64 +239,36 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl text-blue-600 font-semibold">
-                  Upcoming Activity
-                </h2>
-                <select className="border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                  <option>Month</option>
-                  <option>Week</option>
-                  <option>Day</option>
-                </select>
-              </div>
-              {Loding ? (
-                <div className="flex justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#4CC9FE]" />
-                </div>
-              ) : (
-                <div className="bg-white rounded-lg w-full h-32 overflow-auto px-2">
-                  <div className="space-y-4">
-                    {/* Dynamically render each activity item */}
-                    {activities.map((activity, index) => (
-                      <div
-                        className="flex items-center justify-between"
-                        key={index}
-                      >
-                        <div className="flex items-center space-x-3">
-                          {/* Use different colors for different activities based on type */}
-                          <div
-                            className={`w-8 h-8 flex items-center justify-center rounded-full ${
-                              activity.color
-                                ? `bg-${activity.color}-100`
-                                : "bg-slate-200"
-                            }  'gray-600' font-bold`}
-                          >
-                            {getFirstLetter(activity.title)}
-                          </div>
-                          <div>
-                            <p className="text-gray-900 capitalize font-medium">
-                              {activity.title}
-                            </p>
-                            <p className="text-gray-500 text-sm">
-                              {activity.time}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="text-gray-500 text-sm">
-                          {" "}
-                          {new Date(activity.date).toLocaleDateString("en-US", {
-                            day: "2-digit",
-                            month: "2-digit",
-                            year: "numeric",
-                          })}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            <div className="bg-white p-6 rounded-xl shadow">
+  <div className="flex items-center justify-between mb-4">
+    <h2 className="text-xl font-semibold text-blue-600">
+      My Vehicle : ({FormData?.vehicles?.length ?? 0})
+    </h2>
+  </div>
+
+  <div className="space-y-4">
+    {FormData.vehicles?.map((e, index) => (
+      <div
+        key={index}
+        className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300"
+      >
+        <span className="inline-block bg-[#5678e9] text-white text-xs font-medium px-3 py-1 rounded-full mb-3">
+          {e.type}
+        </span>
+
+        <div className="space-y-1 text-sm text-gray-700">
+          <p>
+            <span className="font-medium text-gray-800">Vehicle Name:</span> {e.name}
+          </p>
+          <p>
+            <span className="font-medium text-gray-800">Vehicle Number:</span> {e.number}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
           </div>
           <div className="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-1 gap-4">
             <div className="bg-white p-4 rounded-lg shadow-lg col-span-1">

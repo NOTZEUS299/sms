@@ -12,7 +12,6 @@ import Viewmaintenance from '../../../Modals/Viewmaintenance ';
 import { GetMaintenance } from '../../../services/Api/api';
 import { GrFormView } from 'react-icons/gr';
 import useSidbarTogal from '../../../layout/useSidbarTogal';
-
 const Financial_Management = () => {
 
   const [isOpen, setIsOpen] = useState(true);
@@ -57,6 +56,30 @@ const Financial_Management = () => {
     GetMaintenance(setudata)
   }
 
+    // maintance
+  
+    const [maintenanceData, setMaintenanceData] = useState([]);
+  const [loadingMaintenance, setLoadingMaintenance] = useState(true);
+  
+  useEffect(() => {
+    GetMaintenance((data) => {
+      console.log("Maintenance Data:", data); // 👀 log here
+      setMaintenanceData(data);
+      setLoadingMaintenance(false);
+    });
+  }, []);
+
+  const totalMaintenanceAmount = maintenanceData.reduce(
+    (sum, item) => sum + (parseFloat(item.Maintenance_Amount) || 0),
+    0
+  );
+
+  // Calculate total Penalty Amount
+  const totalPenaltyAmount = maintenanceData.reduce(
+    (sum, item) => sum + (parseFloat(item.Penalty_Amount) || 0),
+    0
+  );
+
   return (
     <div >
       <Sidebar toggleNav={toggleNav} data={data} />
@@ -69,19 +92,23 @@ const Financial_Management = () => {
             <div className="flex flex-col lg:flex-row items-center justify-between p-4 mb-4 bg-white rounded-lg space-y-4   lg:space-y-0">
 
               {/* Cards Container */}
-              <div className="flex space-x-4">
-                {/* Maintenance Amount Card */}
-                <div className="p-4 bg-white rounded-lg shadow-lg border-l-4 border-green-500 w-full lg:w-60">
-                  <h3 className="text-gray-600 font-medium">Maintenance Amount</h3>
-                  <p className="text-green-500 font-bold text-2xl">₹ 0</p>
-                </div>
+             <div className="flex space-x-4">
+      {/* Maintenance Amount Card */}
+      <div className="p-4 bg-white rounded-lg shadow-lg border-l-4 border-green-500 w-full lg:w-60">
+        <h3 className="text-gray-600 font-medium">Maintenance Amount</h3>
+        <p className="text-green-500 font-bold text-2xl">
+          {loadingMaintenance ? "₹ ..." : `₹ ${totalMaintenanceAmount.toLocaleString()}`}
+        </p>
+      </div>
 
-                {/* Penalty Amount Card */}
-                <div className="p-4 bg-white rounded-lg shadow-lg border-l-4 border-red-500 w-full lg:w-60">
-                  <h3 className="text-gray-600 font-medium">Penalty Amount</h3>
-                  <p className="text-red-500 font-bold text-2xl">₹ 0</p>
-                </div>
-              </div>
+      {/* Penalty Amount Card */}
+      <div className="p-4 bg-white rounded-lg shadow-lg border-l-4 border-red-500 w-full lg:w-60">
+        <h3 className="text-gray-600 font-medium">Penalty Amount</h3>
+        <p className="text-red-500 font-bold text-2xl">
+          {loadingMaintenance ? "₹ ..." : `₹ ${totalPenaltyAmount.toLocaleString()}`}
+        </p>
+      </div>
+    </div>
 
               {/* Set Maintenance Button */}
               <button onClick={OpenMaintenance} className="px-4 py-2 w-full lg:w-auto bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow-lg hover:from-orange-600 hover:to-yellow-600 transition duration-200">

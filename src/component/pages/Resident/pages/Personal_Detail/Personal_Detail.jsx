@@ -66,6 +66,8 @@ const Personal_Detail = () => {
       setFormData(data || { members: [], vehicles: [] });
     });
   };
+
+  
   const [Announcement, setAnnouncement] = useState()
 
   useEffect(() => {
