@@ -240,411 +240,316 @@ useEffect(() => {
         </div>
         <main className="flex-1 space-y-6 ">
           <div className="p-6 space-y-4 bg-[#f0f5fb]">
-            {/* Dashboard Cards */}
-            <div className="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 max-[425px]:grid-cols-2 gap-4">
-              <Home_totle_card
-                total_title="Total Balance"
-                total_price={loadingIncome || loadingExpense ? "..." : `₹${totalBalance.toLocaleString()}`}
+          {/* Dashboard Cards */}
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+  <Home_totle_card
+    total_title="Total Balance"
+    total_price={loadingIncome || loadingExpense ? "..." : `₹${totalBalance.toLocaleString()}`}
+    totle_color="text-white"
+    totle_icon_bg_back="bg-[#e3f2fd]"
+    totle_icon_bg="bg-[#2563eb]"
+    totle_bg_border="border-[#1565c0]"
+    totle_Noch="bg-[#2563eb]"
+    totle_simbol={<MdAccountBalanceWallet />}
+  />
 
-                totle_color="text-white"
-                totle_icon_bg_back="bg-[#e3f2fd]" // Light Blue Background
-                totle_icon_bg="bg-[#2563eb]" // Darker Blue Icon
-                totle_bg_border="border-[#1565c0]"
-                totle_Noch="bg-[#2563eb]" // Light Blue Line
-                totle_simbol={<MdAccountBalanceWallet />} // Wallet = Balance
-              />
+  <Home_totle_card
+    total_title="Total Other Income"
+    total_price={loadingIncome ? "..." : `₹${totalIncome.toLocaleString()}`}
+    totle_color="text-white"
+    totle_icon_bg_back="bg-[#e1f5fe]"
+    totle_icon_bg="bg-[#2563eb]"
+    totle_bg_border="border-[#0288d1]"
+    totle_Noch="bg-[#2563eb]"
+    totle_simbol={<MdOutlineAttachMoney />}
+  />
 
-              <Home_totle_card
-                total_title="Total Other Income"
-                total_price={loadingIncome ? "..." : `₹${totalIncome.toLocaleString()}`}
-                totle_color="text-white"
-                totle_icon_bg_back="bg-[#e1f5fe]" // Sky Blue Background
-                totle_icon_bg="bg-[#2563eb]" // Blue Icon
-                totle_bg_border="border-[#0288d1]"
-                totle_Noch="bg-[#2563eb]" // Matching Sky Blue Line
-                totle_simbol={<MdOutlineAttachMoney />} // Money Icon = Income
-              />
+  <Home_totle_card
+    total_title="Total Expense"
+    total_price={loadingExpense ? "..." : `₹${totalAmount.toLocaleString()}`}
+    totle_color="text-white"
+    totle_icon_bg_back="bg-[#f3fafe]"
+    totle_icon_bg="bg-[#2563eb]"
+    totle_bg_border="border-[#039b3f51b5e5]"
+    totle_Noch="bg-[#2563eb]"
+    totle_simbol={<MdMoneyOff />}
+  />
 
-<Home_totle_card
-                total_title="Total Expense"
-                total_price={loadingExpense ? "..." : `₹${totalAmount.toLocaleString()}`}
-                totle_color="text-white"
-                totle_icon_bg_back="bg-[#f3fafe]" // Super Light Blue Background
-                totle_icon_bg="bg-[#2563eb]" // Blue Icon
-                totle_bg_border="border-[#039b3f51b5e5]"
-                totle_Noch="bg-[#2563eb]" // Very Light Blue Line
-                totle_simbol={<MdMoneyOff />} // Cross Money = Expense
-              />
+  <Home_totle_card
+    total_title="Total Unit"
+    total_price={loadingResident ? "..." : residentData.length}
+    totle_color="text-white"
+    totle_icon_bg_back="bg-[#e8eaf6]"
+    totle_icon_bg="bg-[#2563eb]"
+    totle_bg_border="border-[#3f51b5]"
+    totle_Noch="bg-[#2563eb]"
+    totle_simbol={<MdPrecisionManufacturing />}
+  />
+</div>
 
-<Home_totle_card
-  total_title="Total Unit"
-  total_price={loadingResident ? "..." : residentData.length} // 👈 Dynamic count
-  totle_color="text-white"
-  totle_icon_bg_back="bg-[#e8eaf6]"
-  totle_icon_bg="bg-[#2563eb]"
-  totle_bg_border="border-[#3f51b5]"
-  totle_Noch="bg-[#2563eb]"
-  totle_simbol={<MdPrecisionManufacturing />}
-/>
-            </div>
 
-            {/* Complaint List and Upcoming Activity */}
-            <div className="grid xl:grid-cols-1 grid-cols-1 gap-4">
-              <div className="bg-white  xl:col-span-3 rounded-lg shadow">
-                <div className="bg-white  rounded-lg p-4">
-                  <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-lg font-semibold">Complaint List</h2>
-                    <select className="border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                      <option>Month</option>
-                      <option>Week</option>
-                      <option>Day</option>
-                    </select>
-                  </div>
-                  <div className="overflow-x-auto h-32 px-2">
-                    {loadingcomplaint ? (
-                      <div className="flex justify-center h-full items-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#4CC9FE]" />
-                      </div>
-                    ) : (
-                      <table className="min-w-full text-left">
-                        <thead>
-                          <tr className="bg-[#eef1fd] text-gray-700">
-                            <th className="px-4 py-2">Complainer Name</th>
-                            <th className="px-4 py-2">Complaint Name</th>
-                            <th className="px-4 py-2">Date</th>
-                            <th className="px-4 py-2 text-center">Priority</th>
-                            <th className="px-4 py-2 text-center">
-                              Complain Status
-                            </th>
-                            <th className="px-4 py-2 text-center">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {getComplaint.map((e, index) => {
-                            return (
-                              <tr
-                                key={index}
-                                className="border-b hover:bg-gray-50"
-                              >
-                                <td className="px-4 py-2 flex items-center space-x-2">
-                                  <img
-                                    className="w-8 h-8 rounded-full"
-                                    src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
-                                    alt="profile"
-                                  />
-                                  <span>{e.Complainer_Name}</span>
-                                </td>
-                                <td className="px-4 py-2">
-                                  {e.Complaint_Name}
-                                </td>
-                                <td className="px-4 py-2">
-                                  {new Date(e.createdAt).toLocaleDateString(
-                                    "en-US",
-                                    {
-                                      month: "2-digit",
-                                      day: "2-digit",
-                                      year: "numeric",
-                                    }
-                                  )}
-                                </td>
-                                <td className="px-4 py-2 text-center">
-                                  <span
-                                    className={`px-3 py-1 rounded-full text-md font-medium flex justify-center ${
-                                      e.Priority === "High"
-                                        ? "bg-[#e74c3c] text-white"
-                                        : e.Priority === "Medium"
-                                        ? "bg-[#5678e9] text-white"
-                                        : e.Priority === "Low"
-                                        ? "bg-[#39973d] text-white"
-                                        : null
-                                    }`}
-                                  >
-                                    {e.Priority}
-                                  </span>
-                                </td>
-                                <td className="px-4 py-2 text-center">
-                                  <span
-                                    className={`px-3 py-1 rounded-full text-md font-medium flex justify-center ${
-                                      e.Status === "Open"
-                                        ? "bg-[#eef1fd] text-[#5678e9]"
-                                        : e.Status === "Pending"
-                                        ? "bg-[#fff9e7] text-[#ffc313]"
-                                        : e.Status === "Solve"
-                                        ? "bg-[#ebf5ec] text-[#39973d]"
-                                        : null
-                                    }`}
-                                  >
-                                    {e.Status}
-                                  </span>
-                                </td>
-                                <td className="px-4 py-2 flex space-x-2 justify-center">
-                                  <button
-                                    className="text-green-500 p-1"
-                                    onClick={() => OpneEditComplint(e._id)}
-                                  >
-                                    <FaEdit />
-                                  </button>
-                                  <button
-                                    className="text-blue-500 text-2xl rounded"
-                                    onClick={() => OpneViewComplint(e._id)}
-                                  >
-                                    <GrFormView />
-                                  </button>
-                                  <button
-                                    onClick={() => OpneDeleteComplint(e._id)}
-                                    className="text-red-500 p-1"
-                                  >
-                                    <FaTrashAlt />
-                                  </button>
-                                </td>
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
-                    )}
+           {/* Complaint List and Upcoming Activity */}
+<div className="grid grid-cols-1 gap-4">
+  <div className="bg-white rounded-lg shadow">
+    <div className="bg-white rounded-lg p-4 sm:p-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+        <h2 className="text-base sm:text-lg font-semibold">Complaint List</h2>
+        <select className="border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option>Month</option>
+          <option>Week</option>
+          <option>Day</option>
+        </select>
+      </div>
 
-                    {EditComplint && (
-                      <OpenEditComplintModel
-                        _id={a_id}
-                        closeEditComplint={closeEditComplint}
-                        LodData={getComplaintdata}
+      {/* Table Wrapper */}
+      <div className="overflow-x-auto max-h-80">
+        {loadingcomplaint ? (
+          <div className="flex justify-center items-center h-full">
+            <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#4CC9FE]" />
+          </div>
+        ) : (
+          <table className="min-w-full text-sm text-left">
+            <thead>
+              <tr className="bg-[#eef1fd] text-gray-700">
+                <th className="px-4 py-2 whitespace-nowrap">Complainer Name</th>
+                <th className="px-4 py-2 whitespace-nowrap">Complaint Name</th>
+                <th className="px-4 py-2 whitespace-nowrap">Date</th>
+                <th className="px-4 py-2 text-center whitespace-nowrap">Priority</th>
+                <th className="px-4 py-2 text-center whitespace-nowrap">Complain Status</th>
+                <th className="px-4 py-2 text-center whitespace-nowrap">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {getComplaint.map((e, index) => (
+                <tr key={index} className="border-b hover:bg-gray-50">
+                  <td className="px-4 py-2 whitespace-nowrap">
+                    <div className="flex items-center space-x-2">
+                      <img
+                        className="w-8 h-8 rounded-full"
+                        src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
+                        alt="profile"
                       />
-                    )}
-                    {ViewComplint && (
-                      <ViewComplintModel
-                        _id={b_id}
-                        closeViewComplint={closeViewComplint}
-                      />
-                    )}
-                    {DeleteComplint && (
-                      <LodingDelete
-                        loading={loadingcomplint}
-                        DeleteClick={ComlintDelete}
-                        close={CloseDeleteComplint}
-                        getComplaint={getComplaint}
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Graph and Important Numbers */}
-            <div className="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-1 gap-4">
-              <div className="bg-white p-5 rounded-xl shadow-md col-span-2">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-lg font-semibold text-gray-800">
-                    Visitors Log
-                  </h2>
-                  <a href="#" className="text-blue-600 text-sm hover:underline">
-                    View all
-                  </a>
-                </div>
-                <div>
-                  <table className="min-w-full bg-[#eef1fd] rounded-lg ">
-                    <thead>
-                      <tr>
-                        <th className="px-6 py-3 border-b font-medium text-left">
-                          Visitor Name
-                        </th>
-                        <th className="px-6 py-3 border-b font-medium ">
-                          Phone Number
-                        </th>
-                        <th className="px-6 py-3 border-b font-medium ">
-                          Date
-                        </th>
-                        <th className="px-6 py-3 border-b font-medium ">
-                          Unit Number
-                        </th>
-                        <th className="px-6 py-3 border-b font-medium ">
-                          Time
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white">
-                      <tr>
-                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 flex items-center">
-                          <img
-                            className="w-8 h-8 rounded-full mr-1"
-                            src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
-                            alt="profile"
-                          />
-                          <span>Vj</span>
-                        </td>
-                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 truncate text-center">
-                          123456789
-                        </td>
-                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 truncate text-center">
-                          05/05/2222
-                        </td>
-                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 truncate text-center">
-                          <samp className=" px-2 py-1 text-[#5678e9] bg-[#f6f8fb] mr-2 rounded-full">
-                            A
-                          </samp>
-                          1001
-                        </td>
-                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 truncate text-center">
-                          2:50 AM
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div className="bg-white p-5 rounded-xl shadow-md col-span-1">
-                <div className="bg-white rounded-xl">
-                  {/* Header Section with Fixed Button Alignment */}
-                  <div className="flex flex-wrap justify-between items-center gap-2 mb-4">
-                    <h2 className="text-xl font-semibold text-gray-800">
-                      Support Directory
-                    </h2>
-                    <div>
+                      <span>{e.Complainer_Name}</span>
+                    </div>
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap">{e.Complaint_Name}</td>
+                  <td className="px-4 py-2 whitespace-nowrap">
+                    {new Date(e.createdAt).toLocaleDateString("en-US", {
+                      month: "2-digit",
+                      day: "2-digit",
+                      year: "numeric",
+                    })}
+                  </td>
+                  <td className="px-4 py-2 text-center whitespace-nowrap">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium inline-block ${
+                        e.Priority === "High"
+                          ? "bg-[#e74c3c] text-white"
+                          : e.Priority === "Medium"
+                          ? "bg-[#5678e9] text-white"
+                          : e.Priority === "Low"
+                          ? "bg-[#39973d] text-white"
+                          : ""
+                      }`}
+                    >
+                      {e.Priority}
+                    </span>
+                  </td>
+                  <td className="px-4 py-2 text-center whitespace-nowrap">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium inline-block ${
+                        e.Status === "Open"
+                          ? "bg-[#eef1fd] text-[#5678e9]"
+                          : e.Status === "Pending"
+                          ? "bg-[#fff9e7] text-[#ffc313]"
+                          : e.Status === "Solve"
+                          ? "bg-[#ebf5ec] text-[#39973d]"
+                          : ""
+                      }`}
+                    >
+                      {e.Status}
+                    </span>
+                  </td>
+                  <td className="px-4 py-2 text-center whitespace-nowrap">
+                    <div className="flex justify-center space-x-2">
                       <button
-                        onClick={openModal}
-                        className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+                        className="text-green-500 p-1"
+                        onClick={() => OpneEditComplint(e._id)}
                       >
-                        <FaPlus className="mr-2" />
-                        Add Contact
+                        <FaEdit />
                       </button>
-                      {showModal && (
-                        <CreateImportantNumbers
-                          Fdata={Fdata}
-                          setShowModal={closeModal}
-                        />
-                      )}
+                      <button
+                        className="text-blue-500 text-xl"
+                        onClick={() => OpneViewComplint(e._id)}
+                      >
+                        <GrFormView />
+                      </button>
+                      <button
+                        onClick={() => OpneDeleteComplint(e._id)}
+                        className="text-red-500 p-1"
+                      >
+                        <FaTrashAlt />
+                      </button>
                     </div>
-                  </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
 
-                  {/* Contact List Section */}
-                  <div className="space-y-4 h-80 overflow-y-auto pr-2">
-                    {loading ? (
-                      <div className="flex justify-center h-full items-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-blue-500" />
-                      </div>
-                    ) : (
-                      <div className="space-y-4 max-h-80 overflow-y-auto pr-2">
-                        {contacts.map((contact) => (
-                          <div
-                            key={contact._id}
-                            className="flex justify-between items-start p-4 border border-gray-200 rounded-md shadow-sm hover:shadow-md transition"
-                          >
-                            <div className="space-y-1">
-                              <p className="text-sm font-medium text-gray-700">
-                                Name:{" "}
-                                <span className="text-gray-500">
-                                  {contact.Fullname}
-                                </span>
-                              </p>
-                              <p className="text-sm text-gray-700">
-                                Phone:{" "}
-                                <span className="text-gray-500">
-                                  {contact.Phonenumber}
-                                </span>
-                              </p>
-                              <p className="text-sm text-gray-700">
-                                Role:{" "}
-                                <span className="text-gray-500">
-                                  {contact.Work}
-                                </span>
-                              </p>
-                            </div>
-                            <div className="flex space-x-3 pt-1">
-                              <button
-                                onClick={() => OpnedeleteContact(contact._id)}
-                                className="text-red-500 hover:text-red-600 transition"
-                                title="Delete"
-                              >
-                                <FaTrashAlt />
-                              </button>
-                              <button
-                                onClick={() => OpneeditModal(contact._id)}
-                                className="text-blue-600 hover:text-blue-700 transition"
-                                title="Edit"
-                              >
-                                <FaEdit />
-                              </button>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+        {/* Modals */}
+        {EditComplint && (
+          <OpenEditComplintModel
+            _id={a_id}
+            closeEditComplint={closeEditComplint}
+            LodData={getComplaintdata}
+          />
+        )}
+        {ViewComplint && (
+          <ViewComplintModel
+            _id={b_id}
+            closeViewComplint={closeViewComplint}
+          />
+        )}
+        {DeleteComplint && (
+          <LodingDelete
+            loading={loadingcomplint}
+            DeleteClick={ComlintDelete}
+            close={CloseDeleteComplint}
+            getComplaint={getComplaint}
+          />
+        )}
+      </div>
+    </div>
+  </div>
+</div>
 
-                    {editModal && (
-                      <EditImportantNumbers
-                        Fdata={Fdata}
-                        _id={Important_id}
-                        closeEditModal={closeeditModal}
-                      />
-                    )}
+            {/* visitor log and support directory */}
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4">
+  {/* Visitors Log - takes 2 columns on large screens */}
+  <div className="bg-white p-5 rounded-xl shadow-md lg:col-span-2">
+    <div className="flex justify-between items-center mb-4">
+      <h2 className="text-lg font-semibold text-gray-800">Visitors Log</h2>
+      <a href="#" className="text-blue-600 text-sm hover:underline">View all</a>
+    </div>
+    <div className="overflow-x-auto">
+      <table className="min-w-[600px] w-full bg-[#eef1fd] rounded-lg">
+        <thead>
+          <tr>
+            <th className="px-4 py-3 border-b font-medium text-left">Visitor Name</th>
+            <th className="px-4 py-3 border-b font-medium text-center">Phone Number</th>
+            <th className="px-4 py-3 border-b font-medium text-center">Date</th>
+            <th className="px-4 py-3 border-b font-medium text-center">Unit Number</th>
+            <th className="px-4 py-3 border-b font-medium text-center">Time</th>
+          </tr>
+        </thead>
+        <tbody className="bg-white">
+          <tr>
+            <td className="px-4 py-2 text-xs md:text-sm text-gray-700 flex items-center">
+              <img
+                className="w-8 h-8 rounded-full mr-2"
+                src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
+                alt="profile"
+              />
+              <span>Vj</span>
+            </td>
+            <td className="px-4 py-2 text-xs md:text-sm text-gray-700 text-center">123456789</td>
+            <td className="px-4 py-2 text-xs md:text-sm text-gray-700 text-center">05/05/2222</td>
+            <td className="px-4 py-2 text-xs md:text-sm text-gray-700 text-center">
+              <span className="px-2 py-1 text-[#5678e9] bg-[#f6f8fb] rounded-full">A</span> 1001
+            </td>
+            <td className="px-4 py-2 text-xs md:text-sm text-gray-700 text-center">2:50 AM</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-                    {ImportantNumbersDelete && (
-                      <DeleteImportantNumbersModal
-                        contacts={contacts}
-                        setContacts={setContacts}
-                        ClosedeleteContact={ClosedeleteContact}
-                        _id={ImportantNumbersDeleteId}
-                      />
-                    )}
-                  </div>
+  {/* Support Directory - shifts below on small screens */}
+  <div className="bg-white p-5 rounded-xl shadow-md">
+    <div className="bg-white rounded-xl">
+      <div className="flex flex-wrap justify-between items-center gap-2 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800">Support Directory</h2>
+        <button
+          onClick={openModal}
+          className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          <FaPlus className="mr-2" />
+          Add Contact
+        </button>
+        {showModal && (
+          <CreateImportantNumbers Fdata={Fdata} setShowModal={closeModal} />
+        )}
+      </div>
+
+      <div className="space-y-4 h-80 overflow-y-auto pr-2">
+        {loading ? (
+          <div className="flex justify-center h-full items-center">
+            <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-blue-500" />
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {contacts.map((contact) => (
+              <div
+                key={contact._id}
+                className="flex justify-between items-start p-4 border border-gray-200 rounded-md shadow-sm hover:shadow-md transition"
+              >
+                <div className="space-y-1">
+                  <p className="text-sm font-medium text-gray-700">
+                    Name: <span className="text-gray-500">{contact.Fullname}</span>
+                  </p>
+                  <p className="text-sm text-gray-700">
+                    Phone: <span className="text-gray-500">{contact.Phonenumber}</span>
+                  </p>
+                  <p className="text-sm text-gray-700">
+                    Role: <span className="text-gray-500">{contact.Work}</span>
+                  </p>
+                </div>
+                <div className="flex space-x-3 pt-1">
+                  <button
+                    onClick={() => OpnedeleteContact(contact._id)}
+                    className="text-red-500 hover:text-red-600 transition"
+                    title="Delete"
+                  >
+                    <FaTrashAlt />
+                  </button>
+                  <button
+                    onClick={() => OpneeditModal(contact._id)}
+                    className="text-blue-600 hover:text-blue-700 transition"
+                    title="Edit"
+                  >
+                    <FaEdit />
+                  </button>
                 </div>
               </div>
-              <div className="bg-white p-5 rounded-xl shadow-md col-span-1">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-lg font-semibold text-gray-800">
-                    Pending Maintenances
-                  </h2>
-                  <a href="#" className="text-blue-600 text-sm hover:underline">
-                    View all
-                  </a>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-1 gap-3 overflow-y-auto pr-1">
-                  {/* Card 1 */}
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-md shadow-sm border hover:shadow-md transition h-[80px]">
-                    <div className="flex items-center space-x-3">
-                      <img
-                        className="w-9 h-9 rounded-full object-cover"
-                        src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
-                        alt="User"
-                      />
-                      <div className="leading-tight">
-                        <p className="text-sm font-semibold text-gray-800">
-                          Roger Lubin
-                        </p>
-                        <p className="text-xs text-gray-500">2 Month Pending</p>
-                      </div>
-                    </div>
-                    <p className="text-red-600 font-semibold text-sm whitespace-nowrap">
-                      ₹ 5,000
-                    </p>
-                  </div>
+            ))}
+          </div>
+        )}
 
-                  {/* Repeat for other cards — just copy this block */}
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-md shadow-sm border hover:shadow-md transition h-[80px]">
-                    <div className="flex items-center space-x-3">
-                      <img
-                        className="w-9 h-9 rounded-full object-cover"
-                        src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
-                        alt="User"
-                      />
-                      <div className="leading-tight">
-                        <p className="text-sm font-semibold text-gray-800">
-                          Meera Shah
-                        </p>
-                        <p className="text-xs text-gray-500">1 Month Pending</p>
-                      </div>
-                    </div>
-                    <p className="text-red-600 font-semibold text-sm whitespace-nowrap">
-                      ₹ 2,500
-                    </p>
-                  </div>
+        {editModal && (
+          <EditImportantNumbers
+            Fdata={Fdata}
+            _id={Important_id}
+            closeEditModal={closeeditModal}
+          />
+        )}
 
-                  {/* Add more cards as needed... */}
-                </div>
-                
-              </div>
-          
+        {ImportantNumbersDelete && (
+          <DeleteImportantNumbersModal
+            contacts={contacts}
+            setContacts={setContacts}
+            ClosedeleteContact={ClosedeleteContact}
+            _id={ImportantNumbersDeleteId}
+          />
+        )}
+      </div>
+    </div>
+  </div>
+</div>
 
-            </div>
+
             <div className="mt-6">
   <h2 className="text-xl font-semibold mb-4 text-gray-700">Maintenance Details</h2>
 
