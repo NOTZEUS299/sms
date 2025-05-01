@@ -147,7 +147,7 @@ const Financial_Management = () => {
 
           {activeTab === "Maintenance" && (
             <div className="p-4 bg-white rounded-lg shadow-lg overflow-x-auto">
-              <table className="w-full table-auto">
+              {/* <table className="w-full table-auto">
                 <thead className="bg-blue-100 text-gray-700">
                   <tr>
                     <th className="px-4 py-2 text-left">Name</th>
@@ -224,7 +224,49 @@ const Financial_Management = () => {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </table> */}
+              <div className="mt-6">
+  <h2 className="text-xl font-semibold mb-4 text-gray-700">Maintenance Details</h2>
+
+  {loadingMaintenance ? (
+    <div className="flex justify-center items-center py-6">
+      <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-400" />
+    </div>
+  ) : maintenanceData.length === 0 ? (
+    <p className="text-gray-500">No maintenance records found.</p>
+  ) : (
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {maintenanceData.map((item) => (
+        <div
+          key={item._id}
+          className="bg-white rounded-2xl shadow-md hover:shadow-lg border border-gray-100 p-6 transition duration-200"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-blue-600">₹{item.Maintenance_Amount}</h3>
+            <span className="bg-blue-100 text-blue-600 text-xs font-medium px-3 py-1 rounded-full">
+              Maintenance
+            </span>
+          </div>
+
+          <div className="space-y-2 text-sm text-gray-600">
+            <div className="flex justify-between">
+              <span className="font-medium">Penalty:</span>
+              <span>₹{item.Penalty_Amount}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="font-medium">Due Date:</span>
+              <span>{new Date(item.Maintenance_Due_Date).toLocaleDateString()}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="font-medium">Penalty After:</span>
+              <span>{item.Penalty_Applied_After_Day_Selection} days</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
             </div>
           )}
 

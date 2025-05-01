@@ -60,6 +60,7 @@ const Complaint_Submission = () => {
                     <Button onClick={() => setComplaint(true)} Btn_Name="Create Complaint" />
                     {Complaint && (<ComplaintModal close={closeComplaint} Fdata={Fdata} />)}
                 </div>
+                
                 {loadingcomplaint ? (
                     <div className='flex justify-center h-full items-center'>
                     <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#4CC9FE]" />

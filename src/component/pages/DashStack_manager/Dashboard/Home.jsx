@@ -4,6 +4,7 @@ import Header from "../../../layout/Header";
 import Home_totle_card from "../../../layout/Home_totle_card";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import TotalBalanceChart from "../../../layout/TotalBalanceChart";
+import { Link } from 'react-router-dom';
 import {
   Chart as ChartJS,
   LineElement,
@@ -252,7 +253,7 @@ useEffect(() => {
     totle_Noch="bg-[#2563eb]"
     totle_simbol={<MdAccountBalanceWallet />}
   />
-
+<Link to="http://localhost:5173/manager/financial_management/income">
   <Home_totle_card
     total_title="Total Other Income"
     total_price={loadingIncome ? "..." : `₹${totalIncome.toLocaleString()}`}
@@ -263,7 +264,8 @@ useEffect(() => {
     totle_Noch="bg-[#2563eb]"
     totle_simbol={<MdOutlineAttachMoney />}
   />
-
+  </Link>
+<Link to="http://localhost:5173/manager/financial_management/expense">
   <Home_totle_card
     total_title="Total Expense"
     total_price={loadingExpense ? "..." : `₹${totalAmount.toLocaleString()}`}
@@ -274,8 +276,10 @@ useEffect(() => {
     totle_Noch="bg-[#2563eb]"
     totle_simbol={<MdMoneyOff />}
   />
+  </Link>
 
-  <Home_totle_card
+<Link to="http://localhost:5173/manager/resident_management">
+<Home_totle_card
     total_title="Total Unit"
     total_price={loadingResident ? "..." : residentData.length}
     totle_color="text-white"
@@ -285,6 +289,7 @@ useEffect(() => {
     totle_Noch="bg-[#2563eb]"
     totle_simbol={<MdPrecisionManufacturing />}
   />
+</Link>
 </div>
 
 
@@ -550,9 +555,12 @@ useEffect(() => {
 </div>
 
 
-            <div className="mt-6">
+            <div className="mt-6 bg-white rounded-lg p-4">
+  
+  <div className="flex justify-between items-center mb-4">
   <h2 className="text-xl font-semibold mb-4 text-gray-700">Maintenance Details</h2>
-
+      <a href="http://localhost:5173/manager/financial_management/income" className="text-blue-600 mb-4 text-sm hover:underline">View all</a>
+    </div>
   {loadingMaintenance ? (
     <div className="flex justify-center items-center py-6">
       <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-400" />
@@ -587,10 +595,6 @@ useEffect(() => {
               <span>{item.Penalty_Applied_After_Day_Selection} days</span>
             </div>
           </div>
-
-          <button className="mt-4 w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white font-semibold py-2 rounded-xl shadow hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-blue-300 transition-all">
-            Pay Now
-          </button>
         </div>
       ))}
     </div>

@@ -86,8 +86,10 @@ const Otherincome = () => {
   }
 
   return (
+    
     <div>
       <div className="p-6 bg-white rounded-lg">
+     
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-semibold">Other Income</h1>
           <button

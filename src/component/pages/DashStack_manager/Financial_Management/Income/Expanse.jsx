@@ -145,7 +145,7 @@ const Expense = () => {
                 <tbody>
                 {expenses.map((expense, index) => (
                       <tr key={index} className="border-b bg-white hover:bg-gray-50 font-medium text-center md:font-semibold overflow-x-scroll">
-                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700">{expense.Title}</td>
+                        <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 text-start">{expense.Title}</td>
                         <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 truncate">{expense.Description}</td>
                         <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm text-gray-700 text-center">{new Date(expense.Date).toLocaleDateString("en-US", {
                           month: "2-digit",

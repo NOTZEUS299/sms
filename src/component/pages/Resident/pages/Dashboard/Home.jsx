@@ -12,7 +12,7 @@ import {
   GetComplainy,
   ImportantNumbersGet,
 } from "../../../../services/Api/api";
-import { Get_Profile_img,Get_Pending_Maintenances } from "../../Api/api";
+import { Get_Profile_img,Get_Pending_Maintenances,GetComplaint } from "../../Api/api";
 import useSidbarTogal from "../../../../layout/useSidbarTogal";
 import {
   MdAccountBalanceWallet,
@@ -64,7 +64,7 @@ const Home = () => {
   let [getComplaint, setgetComplaint] = useState([]);
   const [loadingcomplaint, setloadingcomplaint] = useState(true);
   const getComplaintdata = () => {
-    GetComplainy(setgetComplaint, setloadingcomplaint);
+    GetComplaint(setgetComplaint, setloadingcomplaint);
   };
 
   const filterComplaints = () => {
@@ -144,101 +144,101 @@ useEffect(() => {
         </div>
         <div className="flex-1 space-y-6 p-6">
           <div className="grid xl:grid-cols-4 grid-cols-1 gap-4">
-            <div className="bg-white xl:col-span-3 rounded-lg shadow">
-              <div className="bg-white rounded-lg p-4">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-lg text-blue-600 font-semibold">
-                    Complaint List
-                  </h2>
-                  <select
-                    value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
-                    className="border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+           <div className="bg-white xl:col-span-3 rounded-lg shadow">
+  <div className="bg-white rounded-lg p-4">
+    <div className="flex justify-between items-center mb-4">
+      <h2 className="text-lg text-blue-600 font-semibold">
+        Complaint List
+      </h2>
+      <select
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+        className="border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="Month">Month</option>
+        <option value="Week">Week</option>
+        <option value="Day">Day</option>
+      </select>
+    </div>
+
+    <div className="overflow-x-auto h-32 px-2">
+      {loadingcomplaint ? (
+        <div className="flex justify-center h-full items-center pb-10">
+          <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#4CC9FE]" />
+        </div>
+      ) : filterComplaints().length === 0 ? (
+        <div className="flex justify-center items-center h-full py-6 text-gray-500 text-sm">
+          No complaints found for selected filter. Everything seems fine!
+        </div>
+      ) : (
+        <table className="min-w-full text-left rounded-lg overflow-hidden">
+          <thead>
+            <tr className="bg-[#eef1fd] text-gray-700">
+              <th className="px-4 py-2">Complainer Name</th>
+              <th className="px-4 py-2">Complaint Name</th>
+              <th className="px-4 py-2 text-center">Date</th>
+              <th className="px-4 py-2 text-center">Priority</th>
+              <th className="px-4 py-2 text-center">Complain Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filterComplaints().map((e, index) => (
+              <tr key={index} className="border-b hover:bg-gray-50">
+                <td className="px-4 py-2 flex items-center space-x-2">
+                  <img
+                    className="w-8 h-8 rounded-full"
+                    src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png"
+                    alt="profile"
+                  />
+                  <span>{e.Complainer_Name}</span>
+                </td>
+                <td className="px-4 py-2">{e.Complaint_Name}</td>
+                <td className="px-4 py-2 text-center">
+                  {new Date(e.createdAt).toLocaleDateString("en-US", {
+                    month: "2-digit",
+                    day: "2-digit",
+                    year: "numeric",
+                  })}
+                </td>
+                <td className="px-4 py-2 text-center">
+                  <span
+                    className={`px-3 py-1 rounded-full text-md font-medium flex justify-center ${
+                      e.Priority === "High"
+                        ? "bg-[#e74c3c] text-white"
+                        : e.Priority === "Medium"
+                        ? "bg-[#5678e9] text-white"
+                        : e.Priority === "Low"
+                        ? "bg-[#39973d] text-white"
+                        : ""
+                    }`}
                   >
-                    <option value="Month">Month</option>
-                    <option value="Week">Week</option>
-                    <option value="Day">Day</option>
-                  </select>
-                </div>
-                <div className="overflow-x-auto h-32 px-2">
-                  {loadingcomplaint ? (
-                    <div className="flex justify-center h-full items-center pb-10">
-                      <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#4CC9FE]" />
-                    </div>
-                  ) : (
-                    <table className="min-w-full text-left rounded-lg overflow-hidden">
-                      <thead>
-                        <tr className="bg-[#eef1fd] text-gray-700">
-                          <th className="px-4 py-2">Complainer Name</th>
-                          <th className="px-4 py-2">Complaint Name</th>
-                          <th className="px-4 py-2 text-center">Date</th>
-                          <th className="px-4 py-2 text-center">Priority</th>
-                          <th className="px-4 py-2 text-center">
-                            Complain Status
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filterComplaints().map((e, index) => (
-                          <tr key={index} className="border-b hover:bg-gray-50">
-                            <td className="px-4 py-2 flex items-center space-x-2">
-                              <img
-                                className="w-8 h-8 rounded-full"
-                                src="https://res.cloudinary.com/ddf3pgcld/image/upload/v1733770799/bl9awma4kwu1d9tdrakp.png
-"
-                                alt="profile"
-                              />
-                              <span>{e.Complainer_Name}</span>
-                            </td>
-                            <td className="px-4 py-2">{e.Complaint_Name}</td>
-                            <td className="px-4 py-2 text-center">
-                              {new Date(e.createdAt).toLocaleDateString(
-                                "en-US",
-                                {
-                                  month: "2-digit",
-                                  day: "2-digit",
-                                  year: "numeric",
-                                }
-                              )}
-                            </td>
-                            <td className="px-4 py-2 text-center">
-                              <span
-                                className={`px-3 py-1 rounded-full text-md font-medium flex justify-center ${
-                                  e.Priority === "High"
-                                    ? "bg-[#e74c3c] text-white"
-                                    : e.Priority === "Medium"
-                                    ? "bg-[#5678e9] text-white"
-                                    : e.Priority === "Low"
-                                    ? "bg-[#39973d] text-white"
-                                    : null
-                                }`}
-                              >
-                                {e.Priority}
-                              </span>
-                            </td>
-                            <td className="px-4 py-2 text-center">
-                              <span
-                                className={`px-3 py-1 rounded-full text-md font-medium flex justify-center ${
-                                  e.Status === "Open"
-                                    ? "bg-[#eef1fd] text-[#5678e9]"
-                                    : e.Status === "Pending"
-                                    ? "bg-[#fff9e7] text-[#ffc313]"
-                                    : e.Status === "Solve"
-                                    ? "bg-[#ebf5ec] text-[#39973d]"
-                                    : null
-                                }`}
-                              >
-                                {e.Status}
-                              </span>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  )}
-                </div>
-              </div>
-            </div>
+                    {e.Priority}
+                  </span>
+                </td>
+                <td className="px-4 py-2 text-center">
+                  <span
+                    className={`px-3 py-1 rounded-full text-md font-medium flex justify-center ${
+                      e.Status === "Open"
+                        ? "bg-[#eef1fd] text-[#5678e9]"
+                        : e.Status === "Pending"
+                        ? "bg-[#fff9e7] text-[#ffc313]"
+                        : e.Status === "Solve"
+                        ? "bg-[#ebf5ec] text-[#39973d]"
+                        : ""
+                    }`}
+                  >
+                    {e.Status}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  </div>
+</div>
+
             <div className="bg-white p-6 rounded-xl shadow">
   <div className="flex items-center justify-between mb-4">
     <h2 className="text-xl font-semibold text-blue-600">
