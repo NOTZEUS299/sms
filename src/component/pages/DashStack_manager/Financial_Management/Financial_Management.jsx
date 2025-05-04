@@ -80,6 +80,8 @@ const Financial_Management = () => {
     0
   );
 
+  console.log("Full udata:", udata);
+
   return (
     <div >
       <Sidebar toggleNav={toggleNav} data={data} />

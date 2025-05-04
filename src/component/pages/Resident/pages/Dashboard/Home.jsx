@@ -12,6 +12,7 @@ import {
   GetComplainy,
   ImportantNumbersGet,
 } from "../../../../services/Api/api";
+import axios from "axios";
 import { Get_Profile_img,Get_Pending_Maintenances,GetComplaint } from "../../Api/api";
 import useSidbarTogal from "../../../../layout/useSidbarTogal";
 import {
@@ -20,6 +21,25 @@ import {
   MdPrecisionManufacturing,
 } from "react-icons/md";
 import { GetMaintenance } from "../../../Resident/Api/api";
+
+
+const url = "https://sms-backend-blue.vercel.app";
+// const url = "http://localhost:8080";
+
+// Axios interceptor to add Authorization header
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 const Home = () => {
   const [isOpen, setIsOpen] = useState(true);
   let [data, setdata] = useState(280);
@@ -40,6 +60,72 @@ const Home = () => {
   const Fdata = () => {
     ImportantNumbersGet(setContacts, setLoading);
   };
+
+ // Fetch maintenance status
+ useEffect(() => {
+  getMaintenanceStatus();
+}, []);
+
+const getMaintenanceStatus = async () => {
+  try {
+    const response = await axios.get(`${url}/maintenance/getMaintenanceStatus`);
+    setMaintenanceData({
+      paid: response.data.paid || [],
+      pending: response.data.pending || [],
+    });
+  } catch (err) {
+    console.error("Error fetching maintenance status:", err);
+  }
+};
+
+// Razorpay payment function
+const payment = async (maintenanceData) => {
+  try {
+    // Fetch the Razorpay key from the backend
+    const { data: keydata } = await axios.get(`${url}/payment/razorpay/key`);
+    const { key } = keydata;
+    console.log("Razorpay Key:", key);
+
+    // Construct the payload for the backend API
+    const payload = {
+      amount: maintenanceData.Maintenance_Amount,
+      paymentType: "Maintenance",
+      incomeId: maintenanceData._id,
+      paymentMethod: "online",
+    };
+    console.log("🚀 ~ payment ~ payload:", payload)
+
+    // Make a request to backend to create the payment order
+    const response = await axios.post(`${url}/payment/create`, payload);
+    console.log("Backend Response:", response.data);
+
+    // Initialize Razorpay options
+    const options = {
+      key: key,
+      amount: maintenanceData.Maintenance_Amount * 100, // Convert to paise
+      currency: "INR",
+      name: "Your Society Name",
+      description: "Maintenance Payment",
+      order_id: response.data.order.id,
+      callback_url: `${url}/payment/verifypayment/${response.data.paymentRecord._id}`,
+      prefill: {
+        name: FormData.Fullname || "User Name",
+        email: FormData.Email || "user@example.com",
+        contact: FormData.Phone || "9999999999",
+      },
+      theme: {
+        color: "#5678e9",
+      },
+    };
+
+    // Initialize and open Razorpay payment modal
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  } catch (err) {
+    console.error("Error processing payment:", err);
+  }
+};
+
 
   // Pending Maintenances
 
@@ -239,7 +325,7 @@ useEffect(() => {
   </div>
 </div>
 
-            <div className="bg-white p-6 rounded-xl shadow">
+            <div className="bg-white p-4 rounded-xl shadow">
   <div className="flex items-center justify-between mb-4">
     <h2 className="text-xl font-semibold text-blue-600">
       My Vehicle : ({FormData?.vehicles?.length ?? 0})
@@ -250,7 +336,7 @@ useEffect(() => {
     {FormData.vehicles?.map((e, index) => (
       <div
         key={index}
-        className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300"
+        className="border border-gray-200 rounded-md p-3 shadow-sm bg-gray-50 hover:shadow-md transition-shadow"
       >
         <span className="inline-block bg-[#5678e9] text-white text-xs font-medium px-3 py-1 rounded-full mb-3">
           {e.type}
@@ -288,7 +374,7 @@ useEffect(() => {
                       {contacts.map((contact) => (
                         <div
                           key={contact._id}
-                          className="flex justify-between items-center p-4 border-2 border-gray-100 rounded-lg"
+                          className="border border-gray-200 rounded-md p-3 shadow-sm bg-gray-50 hover:shadow-md transition-shadow"
                         >
                           <div>
                             <p className="text-sm text-blue-400">
@@ -317,65 +403,79 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-xl p-6 col-span-1">
+            <div className="bg-white rounded-lg shadow-xl p-4 col-span-1">
   {/* Header */}
   <div className="flex items-center justify-between mb-6">
-    <h2 className="text-xl font-bold text-blue-700">Pending Maintenances</h2>
-    <a href="#" className="text-blue-500 hover:underline text-sm font-medium">
+    <h2 className="text-lg text-blue-600 font-semibold">Maintenances Details</h2>
+    <a href="http://localhost:5173/resident/personal_detail" className="text-blue-500 hover:underline text-sm font-medium">
       View All
     </a>
   </div>
 
-  {/* Scrollable Content */}
-  <div className="h-[25rem] overflow-y-auto pr-1 custom-scrollbar">
-    {loadingMaintenance ? (
-      <div className="flex justify-center items-center h-full">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-400" />
-      </div>
-    ) : maintenanceData.length === 0 ? (
-      <div className="text-center text-gray-500 py-12">
-        No maintenance records found.
-      </div>
-    ) : (
-      <div className="flex flex-col gap-4">
-        {maintenanceData.map((item) => (
-          <div
-            key={item._id}
-            className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-all duration-200"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-bold text-blue-600 truncate max-w-[60%]">
-                ₹{item.Maintenance_Amount}
-              </h3>
-              <span className="text-xs font-semibold text-blue-600 bg-blue-100 px-3 py-1 rounded-full whitespace-nowrap">
-                Maintenance
-              </span>
-            </div>
+  {/* Sections: Pending then Paid */}
+  {[
+    { title: "Pending Maintenance", data: maintenanceData.pending, isPaid: false },
+    { title: "Paid Maintenance", data: maintenanceData.paid, isPaid: true },
+  ].map(({ title, data, isPaid }, index) => (
+    <div key={index} className="mb-6">
+      <h3 className="text-lg font-semibold text-gray-800 mb-3">{title}</h3>
 
-            <div className="text-sm text-gray-700 space-y-1">
-              <div className="flex justify-between text-ellipsis overflow-hidden">
-                <span className="font-medium">Penalty:</span>
-                <span>₹{item.Penalty_Amount}</span>
+      <div className="flex flex-col space-y-3 overflow-y-auto max-h-[260px] pr-2">
+        {data &&
+          Array.isArray(data) &&
+          data.map((item, idx) => (
+            <div
+              key={idx}
+              className="border border-gray-200 rounded-md p-3 shadow-sm bg-gray-50 hover:shadow-md transition-shadow"
+            >
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium text-gray-600">Maintenance Amount</span>
+                <span className="text-sm font-semibold text-gray-900">
+                  ₹ {item.Maintenance_Amount?.toFixed(2) || "0.00"}
+                </span>
               </div>
-              <div className="flex justify-between">
-                <span className="font-medium">Due Date:</span>
-                <span>{new Date(item.Maintenance_Due_Date).toLocaleDateString()}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-medium">Penalty After:</span>
-                <span>{item.Penalty_Applied_After_Day_Selection} days</span>
-              </div>
-            </div>
 
-            <button className="mt-4 w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white font-semibold py-2 rounded-xl shadow hover:scale-[1.02] transition-all">
-              Pay Now
-            </button>
-          </div>
-        ))}
+              {!isPaid && (
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm font-medium text-gray-600">Due Date</span>
+                  <span className="text-sm text-gray-800">
+                    {new Date(item.Maintenance_Due_Date).toLocaleDateString("en-IN")}
+                  </span>
+                </div>
+              )}
+
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-medium text-gray-600">Status</span>
+                <span className={`text-xs font-semibold py-1 px-2 rounded ${
+                  isPaid ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                }`}>
+                  {isPaid ? "Paid" : "Pending"}
+                </span>
+              </div>
+
+              {!isPaid && (
+                <button
+                  className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 rounded-md transition"
+                  onClick={() => payment(item)}
+                >
+                  Pay Now
+                </button>
+              )}
+            </div>
+          ))}
       </div>
-    )}
-  </div>
+    </div>
+  ))}
 </div>
+
+
+
+
+
+
+
+
+
 
             <div className="bg-white p-4 rounded-lg shadow-lg col-span-1">
               <div className=" bg-white rounded-lg">
@@ -395,7 +495,7 @@ useEffect(() => {
       {facility.map((facility) => (
         <div
           key={facility._id}
-          className="flex items-start p-5 bg-white border border-gray-200 shadow-md rounded-2xl hover:shadow-lg transition duration-200"
+          className="border border-gray-200 rounded-md p-3 shadow-sm bg-gray-50 hover:shadow-md transition-shadow"
         >
           <div className="flex flex-col space-y-2 w-full">
             <div className="flex items-center space-x-2">
@@ -426,7 +526,7 @@ useEffect(() => {
               <div className=" bg-white rounded-lg">
                 
         <h2 className="text-lg text-blue-600 font-semibold mb-4">Upcoming Activity</h2>
-                <div className="bg-white p-4 rounded-lg shadow">
+                <div className="border border-gray-200 rounded-md p-3 shadow-sm bg-gray-50 hover:shadow-md transition-shadow">
     
       {Loding ? (
                   <div className='flex justify-center'>
@@ -467,6 +567,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };
