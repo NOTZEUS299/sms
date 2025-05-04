@@ -11,7 +11,7 @@ const ViewReq = ({ _id, closeViewComplint }) => {
     }, []);
 
     const editdata = async () => {
-        axios.get("http://localhost:3030/user").then((res) => {
+        axios.get("https://civicnest-backend.onrender.com/user").then((res) => {
             setEditNumber(res.data);
         })
     };

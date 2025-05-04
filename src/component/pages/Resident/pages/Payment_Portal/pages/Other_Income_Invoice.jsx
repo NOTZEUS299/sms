@@ -29,7 +29,7 @@ const Other_Income_Invoice = () => {
     }, []);
 
     const Fdata = () => {
-        axios.get('http://localhost:3030/Event_Payment').then((res) => {
+        axios.get('https://civicnest-backend.onrender.com/Event_Payment').then((res) => {
             setMaintanance(res.data);
         });
     };

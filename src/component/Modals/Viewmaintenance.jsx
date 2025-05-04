@@ -14,7 +14,7 @@ const ViewMaintenance = ({ close, id }) => {
   const [udata, setudata] = useState([])
 
   useEffect(() => {
-    axios.get(`http://localhost:3030/Maintenance/${id}`).then((res) => {
+    axios.get(`https://civicnest-backend.onrender.com/Maintenance/${id}`).then((res) => {
       const data = Array.isArray(res.data) ? res.data : [res.data];
       setudata(data);
     })
