@@ -11,7 +11,7 @@ import {
 } from "../../Api/api";
 
 const url = "https://sms-backend-blue.vercel.app";
-// const url = "http://localhost:8080";
+// const url = "https://civicnest-backend.onrender.com";
 
 // Axios interceptor to add Authorization header
 axios.interceptors.request.use(

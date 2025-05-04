@@ -17,7 +17,7 @@ const OpenResidenceStatusModal = ({ setShowResidenceStatus }) => {
 
     const editdata = async () => {
         try {
-            const response = await axios.get(`http://localhost:3030/user`);
+            const response = await axios.get(`https://civicnest-backend.onrender.com/user`);
             setEditComplaint(response.data);
         } catch (error) {
             console.error('Error fetching complaint data:', error);

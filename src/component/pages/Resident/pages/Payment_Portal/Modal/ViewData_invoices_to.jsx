@@ -14,7 +14,7 @@ const ViewData_invoices_to = ({ Close, id }) => {
     }, []);
 
     const Fdata = () => {
-        axios.get('http://localhost:3030/Maintenance_Invoices_data').then((res) => {
+        axios.get('https://civicnest-backend.onrender.com/Maintenance_Invoices_data').then((res) => {
             setgetInvoices(res.data);
         });
     };
