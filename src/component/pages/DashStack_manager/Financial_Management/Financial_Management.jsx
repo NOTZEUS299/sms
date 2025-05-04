@@ -8,7 +8,7 @@ import { IoMdWallet } from 'react-icons/io';
 import { BsPersonBoundingBox } from 'react-icons/bs';
 import Otherincome from './Income/Otherincome';
 import SetMaintenancePwd from '../../../Modals/SetMaintenancePwd';
-import Viewmaintenance from '../../../Modals/Viewmaintenance ';
+import Viewmaintenance from '../../../Modals/Viewmaintenance';
 import { GetMaintenance } from '../../../services/Api/api';
 import { GrFormView } from 'react-icons/gr';
 import useSidbarTogal from '../../../layout/useSidbarTogal';

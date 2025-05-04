@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
 import PrivateRoute from "./component/services/PrivateRoute/PrivateRoute.jsx";
+import PaymentSuccess from "./component/pages/Resident/PaymentSuccess.jsx";
 
 // Public Pages
 const Login = lazy(() => import("./component/pages/Login"));
@@ -168,7 +169,7 @@ function App() {
           <Route path="/forgot_password/opt" element={<ForgotPasswordOpt />} />
           <Route path="/reset_password" element={<ResetPassword />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
-
+          <Route path="/payment-success" element={<PaymentSuccess />} />
           {/* Manager Routes */}
           <Route
             path="/manager/*"

@@ -2,7 +2,9 @@ import axios from "axios";
 import {jwtDecode} from "jwt-decode";
 
 // const url = 'https://society-management-app-server.onrender.com'
-const url = 'http://localhost:8080'
+// const url = 'http://localhost:8080'
+const url = 'https://sms-backend-blue.vercel.app'
+
 
 axios.interceptors.request.use(
   (config) => {

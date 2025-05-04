@@ -315,7 +315,7 @@ const Personal_Detail = () => {
                           <div className="mt-4 text-gray-700 p-4">
                             <div className="flex justify-between mt-2">
                               <span>Maintenance Amount</span>
-                              <span>₹ {item.Maintenance_Amount.toFixed(2)}</span>
+                              <span>₹ {item.Maintenance_Amount?.toFixed(2) || "0.00"}</span>
                             </div>
                             <div className="flex justify-between mt-2">
                               <span>Due Date</span>
@@ -327,7 +327,8 @@ const Personal_Detail = () => {
                             </div>
                            {!isPaid &&(<div className="flex justify-between mt-2">
                               <span>Penalty Amount</span>
-                              <span>₹ {item.Penalty_Amount.toFixed(2)}</span>
+                              <span>₹ {item.Penalty_Amount?.toFixed(2) || "0.00"}</span>
+
                             </div>)}
                             <div className="flex justify-between mt-2">
                               <span>Penalty After</span>
